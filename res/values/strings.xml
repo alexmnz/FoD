@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="red">#ff0000</color>
+	<color name="green">#00ff00</color>
+	<color name="blue">#0000ff</color>
+    <string name="hello">Hello World, FoDActivity!</string>
+    <string name="app_name">FoD</string>
+    <string name="button_update_text">Update</string>
+    <string name="button_play_sound">Play Sound</string>
+    <string name="button_show_dialog">Show Dialog Box</string>
+	<string name="dialog_title">Dawson is ugly</string>
+	<string name="fod">Fuck off Dawson</string>
+	<string name="insult">Press to send insult text</string>
+	<string name="dialog_text">Gosh you are ugly, Click OK or Cancel to agree</string>
+	<string name="dialog_ok">OK</string>
+	<string name="dialog_cancel">Cancel</string>
+	<string name="no_insults">No Insults set up yet</string>
+	<string name="menu_insert">Add Insult</string>
+    <string name="menu_delete">Delete Insult</string>
+    
+</resources>

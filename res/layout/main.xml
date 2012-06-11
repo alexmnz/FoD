@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+   <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/insult" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:textSize="40dp"
+            android:textColor="@color/blue"
+            android:text="@string/fod" >
+            
+        </TextView>
+               </LinearLayout>
+
+ <Button
+     android:id="@+id/button2"
+     android:layout_width="268dp"
+     android:background="@drawable/dd"
+     android:layout_gravity="center"
+     android:layout_height="350dp" />
+
+</LinearLayout>       
