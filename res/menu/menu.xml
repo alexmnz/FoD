@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/menu_manage"
+        android:title="@string/menu_manage" android:showAsAction="ifRoom|collapseActionView">
+    </item>
+    <item
+        android:id="@+id/menu_prefs"
+        android:title="@string/menu_prefs" android:showAsAction="collapseActionView">
+    </item>com.alex.fod.preferences$prefFrag1com.alex.fod.preferences$prefFrag1com.alex.fod.preferences$prefFrag1com.alex.fod.preferences$prefFrag1
+    <item
+        android:id="@+id/menu_about"
+        android:title="@string/menu_about" android:showAsAction="collapseActionView">
+    </item>
+
+</menu>
