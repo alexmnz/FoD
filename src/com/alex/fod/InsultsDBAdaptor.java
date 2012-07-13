@@ -21,7 +21,7 @@ public class InsultsDBAdaptor {
      * Database creation sql statement
      */
     private static final String DATABASE_CREATE =
-        "create table notes (_id integer primary key autoincrement, "
+        "create table insults (_id integer primary key autoincrement, "
         + "title text not null, body text not null);";
 
     private static final String DATABASE_NAME = "Insult_DB";
@@ -99,7 +99,7 @@ public class InsultsDBAdaptor {
     /**
      * Delete the insult with the given rowId
      * 
-     * @param rowId id of note to delete
+     * @param rowId id of insult to delete
      * @return true if deleted, false otherwise
      */
     public boolean deleteInsult(long rowId) {
@@ -144,9 +144,9 @@ public class InsultsDBAdaptor {
      * specified using the rowId, and it is altered to use the title 
      * values passed in
      * 
-     * @param rowId id of note to update
-     * @param title value to set note title to
-     * @return true if the note was successfully updated, false otherwise
+     * @param rowId id of insult to update
+     * @param title value to set insult title to
+     * @return true if the insult was successfully updated, false otherwise
      */
     public boolean updateInsult(long rowId, String title, String body) {
         ContentValues args = new ContentValues();
