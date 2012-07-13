@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:enabled="true"
+    android:fragment="com.alex.fod.preferences$prefFrag1" >
+
+    <PreferenceCategory android:title="Preferences" >
+        <SwitchPreference
+            android:disableDependentsState="false"
+            android:key="send_SMS"
+            android:summaryOff="Just generate insults"
+            android:summaryOn="Actually send the wanker insults"
+            android:switchTextOff="No"
+            android:switchTextOn="Yes"
+            android:title="Send SMS" />
+
+        <EditTextPreference
+            android:dependency="send_SMS"
+            android:key="SMS_number"
+            android:summary="Who to text"
+            android:title="SMS number" />
+
+        <ListPreference />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="Unused" >
+        <EditTextPreference
+            android:key="username"
+            android:summary="Change your username"
+            android:title="User Name" />
+        <EditTextPreference
+            android:inputType="textPassword"
+            android:key="password"
+            android:summary="Enter or create a password"
+            android:title="Password" />
+
+        <PreferenceScreen
+            android:summary="Select a contact to humiliate"
+            android:title="Contact" >
+            <intent
+                android:action="Intent.ACTION_PICK"
+                android:data="ContactsContract.Contacts.CONTENT_URI" />
+        </PreferenceScreen>
+    </PreferenceCategory>
+
+</PreferenceScreen>
