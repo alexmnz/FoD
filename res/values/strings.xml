@@ -7,6 +7,7 @@
 
     <string name="app_name">FoD</string>
     <string name="app_name_long">Fuck off Dawson</string>
+    <string name="menu_delete">Delete Note</string>
     <string name="app_version">0.0.1\u03B2</string>
     <string name="version_desc">Version</string>
     <string name="dialog_title">Dawson is ugly</string>
@@ -17,7 +18,9 @@
     <string name="menu_manage">Manage Insults</string>
     <string name="menu_about">About</string>
     <string name="menu_prefs">Preferences</string>
-    <string name="about_copyright">Copyright \u00A9 2012 A. Marshall</string>
+    <string name="menu_add">Add Insult</string>
+    <string name="menu_delete">Delete Insults</string>
+    <string name="about_copyright">Copyright \u00A9 2012 A. Marshall/A. Pelly</string>
     <string name="about_text">Some people are just wankers. You should let them know!\n\nCreated using eclipse, github, the android SDK and many, many code snipets from around the web.\n\nSpecial thanks to the Stack Overflow community and Lars Vogel at vogella.com\n\nDistributed under the GPLv3 in the hopes that it will be amusing, but without any warranties of any kind. Use at your own risk.</string>
     <string name="icon_desc">FoD Icon</string>
     <string name="menu_settings">Settings</string>
