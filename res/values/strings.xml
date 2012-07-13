@@ -1,21 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <color name="red">#ff0000</color>
-	<color name="green">#00ff00</color>
-	<color name="blue">#0000ff</color>
-    <string name="hello">Hello World, FoDActivity!</string>
+    <color name="green">#00ff00</color>
+    <color name="blue">#0000ff</color>
+
     <string name="app_name">FoD</string>
-    <string name="button_update_text">Update</string>
-    <string name="button_play_sound">Play Sound</string>
-    <string name="button_show_dialog">Show Dialog Box</string>
-	<string name="dialog_title">Dawson is ugly</string>
-	<string name="fod">Fuck off Dawson</string>
-	<string name="insult">Press to send insult text</string>
-	<string name="dialog_text">Gosh you are ugly, Click OK or Cancel to agree</string>
-	<string name="dialog_ok">OK</string>
-	<string name="dialog_cancel">Cancel</string>
-	<string name="no_insults">No Insults set up yet</string>
-	<string name="menu_insert">Add Insult</string>
-    <string name="menu_delete">Delete Insult</string>
-    
+    <string name="app_name_long">Fuck off Dawson</string>
+    <string name="app_version">0.0.1\u03B2</string>
+    <string name="version_desc">Version</string>
+    <string name="dialog_title">Dawson is ugly</string>
+    <string name="send_insult">Send Insult</string>
+    <string name="view_insult">View Insult</string>
+    <string name="dialog_text">Gosh you are ugly, Click OK or Cancel to agree</string>
+    <string name="no_insults">No Insults set up yet</string>
+    <string name="menu_manage">Manage Insults</string>
+    <string name="menu_about">About</string>
+    <string name="menu_prefs">Preferences</string>
+    <string name="about_copyright">Copyright \u00A9 2012 A. Marshall</string>
+    <string name="about_text">Some people are just wankers. You should let them know!\n\nCreated using eclipse, github, the android SDK and many, many code snipets from around the web.\n\nSpecial thanks to the Stack Overflow community and Lars Vogel at vogella.com\n\nDistributed under the GPLv3 in the hopes that it will be amusing, but without any warranties of any kind. Use at your own risk.</string>
+    <string name="icon_desc">FoD Icon</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_about_dialog">AboutDialog</string>
+    <string name="SMS_number">0294895150</string>
+    <string name="SMS_message">You\'re a complete tool Dawson.</string>
+
 </resources>
