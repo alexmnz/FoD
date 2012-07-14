@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     android:enabled="true"
-    android:fragment="com.alex.fod.preferences$prefFrag1" >
+    android:fragment="org.emphie.FoD.preferences$prefFrag1" >
 
     <PreferenceCategory android:title="Preferences" >
         <SwitchPreference
+            android:defaultValue="true"
             android:disableDependentsState="false"
             android:key="send_SMS"
             android:summaryOff="Just generate insults"
@@ -14,31 +15,32 @@
             android:title="Send SMS" />
 
         <EditTextPreference
+            android:defaultValue="@string/dawsons_number"
             android:dependency="send_SMS"
+            android:inputType="number"
             android:key="SMS_number"
             android:summary="Who to text"
             android:title="SMS number" />
-
-        <ListPreference />
-    </PreferenceCategory>
-    <PreferenceCategory android:title="Unused" >
         <EditTextPreference
-            android:key="username"
-            android:summary="Change your username"
-            android:title="User Name" />
-        <EditTextPreference
-            android:inputType="textPassword"
-            android:key="password"
-            android:summary="Enter or create a password"
-            android:title="Password" />
-
-        <PreferenceScreen
-            android:summary="Select a contact to humiliate"
-            android:title="Contact" >
-            <intent
-                android:action="Intent.ACTION_PICK"
-                android:data="ContactsContract.Contacts.CONTENT_URI" />
-        </PreferenceScreen>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:defaultValue="@string/SMS_message"
+            android:gravity="top|left"
+            android:inputType="textMultiLine"
+            android:key="SMS_message"
+            android:lines="5"
+            android:scrollHorizontally="false"
+            android:summary="Tell them what you think of them!"
+            android:title="Insult" />
     </PreferenceCategory>
+    <!--
+         <PreferenceCategory android:title="Unused" > <EditTextPreference android:key="username" 
+		android:summary="Change your username" android:title="User Name" /> <EditTextPreference 
+		android:inputType="textPassword" android:key="password" android:summary="Enter 
+		or create a password" android:title="Password" /> <PreferenceScreen android:summary="Select 
+		a contact to humiliate" android:title="Contact" > <intent android:action="Intent.ACTION_PICK" 
+		android:data="ContactsContract.Contacts.CONTENT_URI" /> </PreferenceScreen> 
+		</PreferenceCategory>
+    -->
 
 </PreferenceScreen>
