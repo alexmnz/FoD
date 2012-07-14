@@ -7,6 +7,8 @@
 
     <string name="app_name">FoD</string>
     <string name="app_name_long">Fuck off Dawson</string>
+    <string name="menu_delete">Delete Note</string>
+
     <string name="version_desc">Version</string>
     <string name="dialog_title">Dawson is ugly</string>
     <string name="send_insult">Send Insult</string>
