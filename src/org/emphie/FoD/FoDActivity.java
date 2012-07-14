@@ -1,4 +1,4 @@
-package com.alex.fod;
+package org.emphie.FoD;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -21,6 +21,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceManager;
 
@@ -37,15 +38,15 @@ public class FoDActivity extends Activity {
 		preferences = PreferenceManager.getDefaultSharedPreferences(this);
 
 		send_insult = (Button) findViewById(R.id.send_insult);
-		if (preferences.getBoolean("send_SMS", false)) {
+		if (preferences.getBoolean("send_SMS", true)) {
 			send_insult.setText(R.string.send_insult);
 		} else {
 			send_insult.setText(R.string.view_insult);
 		}
 		send_insult.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-				if (preferences.getBoolean("send_SMS", false)) {
-					sendSMS(preferences.getString("SMS_number", null), getString(R.string.SMS_message));
+				if (preferences.getBoolean("send_SMS", true)) {
+					sendSMS(preferences.getString("SMS_number", getString(R.string.dawsons_number)), preferences.getString("SMS_message",getString(R.string.SMS_message)));
 				} else {
 	                Toast.makeText(getBaseContext(), getString(R.string.SMS_message), 
 	                        Toast.LENGTH_SHORT).show();
@@ -90,10 +91,12 @@ public class FoDActivity extends Activity {
 		case R.id.menu_about:
 			ShowAbout();
 			break;
+/*			
 		case R.id.menu_manage:
 			Intent i = new Intent(this, Insults.class);
 			startActivity(i);
 			break;
+*/			
 		default:
 			break;
 		}
@@ -172,7 +175,7 @@ public class FoDActivity extends Activity {
 		 */
 		// Launch Preference activity
 		Intent i = new Intent(FoDActivity.this, preferences.class);
-		i.putExtra( PreferenceActivity.EXTRA_SHOW_FRAGMENT, "com.alex.fod.preferences$prefFrag1" );
+		i.putExtra( PreferenceActivity.EXTRA_SHOW_FRAGMENT, "org.emphie.FoD.preferences$prefFrag1" );
 		i.putExtra( PreferenceActivity.EXTRA_NO_HEADERS, true );
 		startActivity(i);
 
@@ -216,8 +219,14 @@ public class FoDActivity extends Activity {
 
 		// set the custom dialog components
 		about_version = (TextView) about_view.findViewById(R.id.about_version);
-		about_version.setText(getText(R.string.version_desc) + " "
-				+ getText(R.string.app_version));
+		try {
+			about_version.setText(getText(R.string.version_desc) + " "
+					+ getPackageManager().getPackageInfo(getPackageName(), 0).versionName);
+		} catch (NameNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 
 		image = (ImageView) about_view.findViewById(R.id.image);
 		image.setImageResource(R.drawable.ic_launcher);

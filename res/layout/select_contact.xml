@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<linearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/select_contact_root"
+    android:orientation="vertical"
+    android:padding="10dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+<!-- 
+    <QuickContactBadge
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+    </QuickContactBadge>
+
+    <CheckBox
+        android:id="@+id/dawson_check"
+        android:text="Dawson" />
+
+    <ImageView
+        android:id="@+id/contact_picture"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/dawson" />
+ -->
+
+</linearLayout>

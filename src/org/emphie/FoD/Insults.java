@@ -1,6 +1,8 @@
-package com.alex.fod;
+package org.emphie.FoD;
 
 
+
+import org.emphie.FoD.R;
 
 import android.app.Activity;
 import android.database.Cursor;
