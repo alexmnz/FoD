@@ -1,7 +1,6 @@
-package org.emphie.FoD;
+package org.emphie.fod;
 
 import java.util.List;
-
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.os.Bundle;
