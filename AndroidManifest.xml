@@ -24,6 +24,8 @@
         </activity>
         <activity android:name="preferences">
         </activity>
+        <activity android:name="insultedit">
+        </activity>
     </application>
 
 </manifest>

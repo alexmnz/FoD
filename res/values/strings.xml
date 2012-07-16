@@ -7,7 +7,6 @@
 
     <string name="app_name">FoD</string>
     <string name="app_name_long">Fuck off Dawson</string>
-    <string name="menu_delete">Delete Note</string>
     <string name="app_version">0.0.1\u03B2</string>
     <string name="version_desc">Version</string>
     <string name="dialog_title">Dawson is ugly</string>
@@ -27,5 +26,8 @@
     <string name="title_activity_about_dialog">AboutDialog</string>
     <string name="SMS_number">0294895150</string>
     <string name="SMS_message">You\'re a complete tool Dawson.</string>
-
+    <string name="title">Title</string>
+    <string name="body">Body</string>
+    <string name="confirm">Confirm</string>
+    <string name="editinsult">Edit Insult</string>
 </resources>
