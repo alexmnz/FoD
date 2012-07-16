@@ -1,4 +1,4 @@
-package org.emphie.FoD;
+package org.emphie.fod;
 
 import android.content.ContentValues;
 import android.content.Context;

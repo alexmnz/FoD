@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     android:enabled="true"
-    android:fragment="org.emphie.FoD.preferences$prefFrag1" >
+    android:fragment="org.emphie.fod.preferences$prefFrag1" >
 
     <PreferenceCategory android:title="Preferences" >
         <SwitchPreference

@@ -1,4 +1,4 @@
-package org.emphie.FoD;
+package org.emphie.fod;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -21,6 +21,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.content.SharedPreferences;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceManager;
@@ -36,24 +39,39 @@ public class FoDActivity extends Activity {
 		setContentView(R.layout.main);
 		// Initialise preferences
 		preferences = PreferenceManager.getDefaultSharedPreferences(this);
-
-		send_insult = (Button) findViewById(R.id.send_insult);
-		if (preferences.getBoolean("send_SMS", true)) {
-			send_insult.setText(R.string.send_insult);
-		} else {
-			send_insult.setText(R.string.view_insult);
+		if (isdebug(this)) {
+			final AlertDialog.Builder debug_builder = new AlertDialog.Builder(
+					this);
+			debug_builder.setTitle("Debug");
+			debug_builder.setMessage("send SMS is set to "
+					+ preferences.getBoolean("send_SMS", true));
+			debug_builder.setPositiveButton(android.R.string.ok, null);
+			debug_builder.show();
 		}
+		send_insult = (Button) findViewById(R.id.send_insult);
+
 		send_insult.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				if (preferences.getBoolean("send_SMS", true)) {
-					sendSMS(preferences.getString("SMS_number", getString(R.string.dawsons_number)), preferences.getString("SMS_message",getString(R.string.SMS_message)));
+					sendSMS(preferences.getString("SMS_number",
+							getString(R.string.dawsons_number)), preferences
+							.getString("SMS_message",
+									getString(R.string.SMS_message)));
 				} else {
-	                Toast.makeText(getBaseContext(), getString(R.string.SMS_message), 
-	                        Toast.LENGTH_SHORT).show();
-				};
+					Toast.makeText(getBaseContext(),
+							getString(R.string.SMS_message), Toast.LENGTH_SHORT)
+							.show();
+				}
+				;
 			}
 		});
-
+		
+/*		if (preferences.getBoolean("send_SMS", true)) {
+			send_insult.setText(R.string.send_insult);
+		} else {
+			send_insult.setText(R.string.view_insult);
+		}*/
+		
 		Button victim_jpg = (Button) findViewById(R.id.victim_jpg);
 		final AlertDialog.Builder builder = new AlertDialog.Builder(this);
 		builder.setTitle(R.string.dialog_title);
@@ -66,15 +84,19 @@ public class FoDActivity extends Activity {
 			}
 		});
 	}
+	
+
+
 	@Override
 	public void onResume() {
-        super.onResume();
-		if (preferences.getBoolean("send_SMS", false)) {
+		super.onResume();
+		if (preferences.getBoolean("send_SMS", true)) {
 			send_insult.setText(R.string.send_insult);
 		} else {
 			send_insult.setText(R.string.view_insult);
 		}
 	}
+
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		MenuInflater inflater = getMenuInflater();
@@ -91,97 +113,93 @@ public class FoDActivity extends Activity {
 		case R.id.menu_about:
 			ShowAbout();
 			break;
-/*			
-		case R.id.menu_manage:
-			Intent i = new Intent(this, Insults.class);
-			startActivity(i);
-			break;
-*/			
+		/*
+		 * case R.id.menu_manage: Intent i = new Intent(this, Insults.class);
+		 * startActivity(i); break;
+		 */
 		default:
 			break;
 		}
 
 		return true;
 	}
-	
-	//---sends an SMS message to another device---
+
+	// ---sends an SMS message to another device---
 	// from http://mobiforge.com/developing/story/sms-messaging-android
-    private void sendSMS(String phoneNumber, String message)
-    {        
-        String SENT = "SMS_SENT";
-        String DELIVERED = "SMS_DELIVERED";
- 
-        PendingIntent sentPI = PendingIntent.getBroadcast(this, 0,
-            new Intent(SENT), 0);
- 
-        PendingIntent deliveredPI = PendingIntent.getBroadcast(this, 0,
-            new Intent(DELIVERED), 0);
- 
-        //---when the SMS has been sent---
-        registerReceiver(new BroadcastReceiver(){
-            @Override
-            public void onReceive(Context arg0, Intent arg1) {
-                switch (getResultCode())
-                {
-                    case Activity.RESULT_OK:
-                        Toast.makeText(getBaseContext(), "SMS sent", 
-                                Toast.LENGTH_SHORT).show();
-                        break;
-                    case SmsManager.RESULT_ERROR_GENERIC_FAILURE:
-                        Toast.makeText(getBaseContext(), "Generic failure", 
-                                Toast.LENGTH_SHORT).show();
-                        break;
-                    case SmsManager.RESULT_ERROR_NO_SERVICE:
-                        Toast.makeText(getBaseContext(), "No service", 
-                                Toast.LENGTH_SHORT).show();
-                        break;
-                    case SmsManager.RESULT_ERROR_NULL_PDU:
-                        Toast.makeText(getBaseContext(), "Null PDU", 
-                                Toast.LENGTH_SHORT).show();
-                        break;
-                    case SmsManager.RESULT_ERROR_RADIO_OFF:
-                        Toast.makeText(getBaseContext(), "Radio off", 
-                                Toast.LENGTH_SHORT).show();
-                        break;
-                }
-            }
-        }, new IntentFilter(SENT));
- 
-        //---when the SMS has been delivered---
-        registerReceiver(new BroadcastReceiver(){
-            @Override
-            public void onReceive(Context arg0, Intent arg1) {
-                switch (getResultCode())
-                {
-                    case Activity.RESULT_OK:
-                        Toast.makeText(getBaseContext(), "SMS delivered", 
-                                Toast.LENGTH_SHORT).show();
-                        break;
-                    case Activity.RESULT_CANCELED:
-                        Toast.makeText(getBaseContext(), "SMS not delivered", 
-                                Toast.LENGTH_SHORT).show();
-                        break;                        
-                }
-            }
-        }, new IntentFilter(DELIVERED));        
- 
-        SmsManager sms = SmsManager.getDefault();
-        sms.sendTextMessage(phoneNumber, null, message, sentPI, deliveredPI);        
-    }
-    
+	private void sendSMS(String phoneNumber, String message) {
+		String SENT = "SMS_SENT";
+		String DELIVERED = "SMS_DELIVERED";
+
+		PendingIntent sentPI = PendingIntent.getBroadcast(this, 0, new Intent(
+				SENT), 0);
+
+		PendingIntent deliveredPI = PendingIntent.getBroadcast(this, 0,
+				new Intent(DELIVERED), 0);
+
+		// ---when the SMS has been sent---
+		registerReceiver(new BroadcastReceiver() {
+			@Override
+			public void onReceive(Context arg0, Intent arg1) {
+				switch (getResultCode()) {
+				case Activity.RESULT_OK:
+					Toast.makeText(getBaseContext(), "SMS sent",
+							Toast.LENGTH_SHORT).show();
+					break;
+				case SmsManager.RESULT_ERROR_GENERIC_FAILURE:
+					Toast.makeText(getBaseContext(), "Generic failure",
+							Toast.LENGTH_SHORT).show();
+					break;
+				case SmsManager.RESULT_ERROR_NO_SERVICE:
+					Toast.makeText(getBaseContext(), "No service",
+							Toast.LENGTH_SHORT).show();
+					break;
+				case SmsManager.RESULT_ERROR_NULL_PDU:
+					Toast.makeText(getBaseContext(), "Null PDU",
+							Toast.LENGTH_SHORT).show();
+					break;
+				case SmsManager.RESULT_ERROR_RADIO_OFF:
+					Toast.makeText(getBaseContext(), "Radio off",
+							Toast.LENGTH_SHORT).show();
+					break;
+				}
+			}
+		}, new IntentFilter(SENT));
+
+		// ---when the SMS has been delivered---
+		registerReceiver(new BroadcastReceiver() {
+			@Override
+			public void onReceive(Context arg0, Intent arg1) {
+				switch (getResultCode()) {
+				case Activity.RESULT_OK:
+					Toast.makeText(getBaseContext(), "SMS delivered",
+							Toast.LENGTH_SHORT).show();
+					break;
+				case Activity.RESULT_CANCELED:
+					Toast.makeText(getBaseContext(), "SMS not delivered",
+							Toast.LENGTH_SHORT).show();
+					break;
+				}
+			}
+		}, new IntentFilter(DELIVERED));
+
+		SmsManager sms = SmsManager.getDefault();
+		sms.sendTextMessage(phoneNumber, null, message, sentPI, deliveredPI);
+	}
+
 	public void updatePrefs() {
 		/*
 		 * Show the preferences menu and let the user select their options
 		 */
 		// Launch Preference activity
 		Intent i = new Intent(FoDActivity.this, preferences.class);
-		i.putExtra( PreferenceActivity.EXTRA_SHOW_FRAGMENT, "org.emphie.FoD.preferences$prefFrag1" );
-		i.putExtra( PreferenceActivity.EXTRA_NO_HEADERS, true );
+		i.putExtra(PreferenceActivity.EXTRA_SHOW_FRAGMENT,
+				"org.emphie.fod.preferences$prefFrag1");
+		i.putExtra(PreferenceActivity.EXTRA_NO_HEADERS, true);
 		startActivity(i);
 
 		// Some feedback to the user
-		//Toast.makeText(FoDActivity.this, "Enter your user credentials.",
-		//		Toast.LENGTH_LONG).show();
+		// Toast.makeText(FoDActivity.this, "Enter your user credentials.",
+		// Toast.LENGTH_LONG).show();
 		// prefs.
 		/*
 		 * Editor edit = preferences.edit(); String username =
@@ -220,13 +238,15 @@ public class FoDActivity extends Activity {
 		// set the custom dialog components
 		about_version = (TextView) about_view.findViewById(R.id.about_version);
 		try {
-			about_version.setText(getText(R.string.version_desc) + " "
-					+ getPackageManager().getPackageInfo(getPackageName(), 0).versionName);
+			about_version
+					.setText(getText(R.string.version_desc)
+							+ " "
+							+ getPackageManager().getPackageInfo(
+									getPackageName(), 0).versionName);
 		} catch (NameNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
 
 		image = (ImageView) about_view.findViewById(R.id.image);
 		image.setImageResource(R.drawable.ic_launcher);
@@ -255,5 +275,25 @@ public class FoDActivity extends Activity {
 
 		about_dialog.show();
 
+	}
+
+	public static boolean isdebug(Activity context) {
+		boolean debug = false;
+		PackageInfo packageInfo = null;
+		try {
+			packageInfo = context.getPackageManager().getPackageInfo(
+					context.getApplication().getPackageName(),
+					PackageManager.GET_CONFIGURATIONS);
+		} catch (NameNotFoundException e) {
+			e.printStackTrace();
+		}
+		if (packageInfo != null) {
+			int flags = packageInfo.applicationInfo.flags;
+			if ((flags & ApplicationInfo.FLAG_DEBUGGABLE) != 0) {
+				debug = true;
+			} else
+				debug = false;
+		}
+		return debug;
 	}
 }

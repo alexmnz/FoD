@@ -1,8 +1,4 @@
-package org.emphie.FoD;
-
-
-
-
+package org.emphie.fod;
 
 import android.app.Activity;
 import android.content.Intent;

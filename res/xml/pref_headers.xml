@@ -1,6 +1,6 @@
 <preference-headers
         xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <header android:fragment="org.emphie.FoD.preferences$prefFrag1"
+    <header android:fragment="org.emphie.fod.preferences$prefFrag1"
             android:title="Preferences"/>
 </preference-headers>
