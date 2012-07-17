@@ -40,13 +40,7 @@ public class FoDActivity extends Activity {
 		// Initialise preferences
 		preferences = PreferenceManager.getDefaultSharedPreferences(this);
 		if (isdebug(this)) {
-			final AlertDialog.Builder debug_builder = new AlertDialog.Builder(
-					this);
-			debug_builder.setTitle("Debug");
-			debug_builder.setMessage("send SMS is set to "
-					+ preferences.getBoolean("send_SMS", true));
-			debug_builder.setPositiveButton(android.R.string.ok, null);
-			debug_builder.show();
+
 		}
 		send_insult = (Button) findViewById(R.id.send_insult);
 
