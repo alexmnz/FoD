@@ -34,5 +34,4 @@
         android:layout_height="350dp"
         android:layout_gravity="center"
         android:background="@drawable/dawson" />
-
-</LinearLayout>
+</LinearLayout>
