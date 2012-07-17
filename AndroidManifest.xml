@@ -16,8 +16,8 @@
     <!-- \u03B2 is the beta symbol -->
 
     <uses-sdk
-        android:minSdkVersion="15"
-        android:targetSdkVersion="15" />
+        android:minSdkVersion="8"
+        android:targetSdkVersion="16" />
 
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.READ_CALL_LOG" />
@@ -45,7 +45,7 @@
         </activity>
         <activity android:name=".Insults" >
         </activity>
-        <activity android:name="org.emphie.fod.preferences" >
+        <activity android:name=".preferences" >
         </activity>
     </application>
 
