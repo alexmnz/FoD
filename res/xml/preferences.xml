@@ -34,13 +34,27 @@
             android:title="Insult" />
     </PreferenceCategory>
     <!--
-         <PreferenceCategory android:title="Unused" > <EditTextPreference android:key="username" 
-		android:summary="Change your username" android:title="User Name" /> <EditTextPreference 
-		android:inputType="textPassword" android:key="password" android:summary="Enter 
-		or create a password" android:title="Password" /> <PreferenceScreen android:summary="Select 
-		a contact to humiliate" android:title="Contact" > <intent android:action="Intent.ACTION_PICK" 
-		android:data="ContactsContract.Contacts.CONTENT_URI" /> </PreferenceScreen> 
-		</PreferenceCategory>
+    <PreferenceCategory android:title="Unused" >
+        <EditTextPreference
+            android:key="username"
+            android:summary="Change your username"
+            android:title="User Name" />
+        <EditTextPreference
+            android:inputType="textPassword"
+            android:key="password"
+            android:summary="Enter 
+		or create a password"
+            android:title="Password" />
+
+        <PreferenceScreen
+            android:summary="Select 
+		a contact to humiliate"
+            android:title="Contact" >
+            <intent
+                android:action="Intent.ACTION_PICK"
+                android:data="ContactsContract.Contacts.CONTENT_URI" />
+        </PreferenceScreen>
+    </PreferenceCategory>
     -->
 
 </PreferenceScreen>
