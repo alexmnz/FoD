@@ -33,7 +33,7 @@ git rm *.swp
 git rm *~.nib
 git rm local.properties
 git rm .classpath
-git rm -r -f .settings/
+#git rm -r -f .settings/
 git rm .loadpath
 
 # External tool builders
