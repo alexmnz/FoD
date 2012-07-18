@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Version		Date	Comment -->
-<!-- 1			13-07-12	First upload to market -->
-<!-- 2			14-07-12	Some code tidyup appropriate for beta release and added icons -->
-<!-- 3			15-07-12	Better icons -->
-<!-- 4			15-07-12	Tidy permissions for market release -->
-<!-- -			-			use: "aapt dump badging ~/Desktop/FoD.apk" to check permissions -->
-<!-- 5-			15-07-12	correct dots in front of activity names -->
+<!-- 
+Version		Date	Comment
+1			13-07-12	First upload to market
+2			14-07-12	Some code tidyup appropriate for beta release and added icons
+3			15-07-12	Better icons
+4			15-07-12	Tidy permissions for market release
+						use: "aapt dump badging ~/Desktop/FoD.apk" to check permissions
+5			15-07-12	correct dots in front of activity names
+6			15-07-12	published on market
+-->
 
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="org.emphie.fod"
