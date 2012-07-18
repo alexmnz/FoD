@@ -7,7 +7,8 @@
 
     <string name="app_name">FoD</string>
     <string name="app_name_long">Fuck off Dawson</string>
-    <string name="app_version">0.0.1\u03B2</string>
+    <string name="menu_delete">Delete Note</string>
+
     <string name="version_desc">Version</string>
     <string name="dialog_title">Dawson is ugly</string>
     <string name="send_insult">Send Insult</string>
@@ -30,4 +31,5 @@
     <string name="body">Body</string>
     <string name="confirm">Confirm</string>
     <string name="editinsult">Edit Insult</string>
+	<string name="dawsons_number">+64211807015</string>
 </resources>

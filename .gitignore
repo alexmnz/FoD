@@ -1,3 +1,15 @@
+#--- orig files from meld tool
+*.orig
+
+#--- misc editor tmp files
+*~
+
+#--- downloaded web icon files
+*zip.part*
+
+#--- proguard code optimisation files
+proguard/
+
 #--- Android files
 # built application files
 *.apk
