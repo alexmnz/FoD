@@ -1,4 +1,4 @@
-package com.alex.fod;
+package org.emphie.fod;
 
 import android.app.Activity;
 import android.database.Cursor;
