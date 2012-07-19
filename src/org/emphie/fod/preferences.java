@@ -1,7 +1,5 @@
 package org.emphie.fod;
 
-//import java.util.List;
-
 import java.util.List;
 
 import android.annotation.TargetApi;

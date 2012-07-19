@@ -1,7 +1,6 @@
 package org.emphie.fod;
 
 import java.io.UnsupportedEncodingException;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.PendingIntent;
@@ -31,6 +30,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
 
 public class FoDActivity extends Activity {
 	SharedPreferences preferences;
@@ -94,7 +94,6 @@ public class FoDActivity extends Activity {
 				;
 			}
 		});
-
 		/*
 		 * if (preferences.getBoolean("send_SMS", true)) {
 		 * send_insult.setText(R.string.send_insult);
@@ -115,6 +114,7 @@ public class FoDActivity extends Activity {
 			}
 		});
 	}
+	
 
 	@Override
 	public void onResume() {
@@ -215,7 +215,6 @@ public class FoDActivity extends Activity {
 		i.putExtra(PreferenceActivity.EXTRA_SHOW_FRAGMENT, "org.emphie.fod.preferences$prefFrag1");
 		i.putExtra(PreferenceActivity.EXTRA_NO_HEADERS, true);
 		startActivity(i);
-
 	}
 
 	public void ShowAbout() {
@@ -315,7 +314,6 @@ public class FoDActivity extends Activity {
 		}
 		return valid_number;
 	}
-
 	public static boolean isdebug(Activity context) {
 		boolean debug = false;
 		PackageInfo packageInfo = null;
