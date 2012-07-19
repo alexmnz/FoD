@@ -19,7 +19,7 @@
     <string name="menu_add">Add Insult</string>
     <string name="menu_delete">Delete Insults</string>
     <string name="about_copyright">Copyright \u00A9 2012 A. Marshall/A. Pelly</string>
-    <string name="about_text">Some people are just wankers. You should let them know!\n\nCreated using eclipse, github, the android SDK and many, many code snipets from around the web.\n\nSpecial thanks to the Stack Overflow community and Lars Vogel at vogella.com\n\nDistributed under the GPLv3 in the hopes that it will be amusing, but without any warranties of any kind. Use at your own risk.</string>
+    <string name="about_text">Some people are just wankers. You should let them know!\n\nCreated using eclipse, github, the android SDK and many, many code snipets from around the web.\n\nSpecial thanks to the Stack Overflow community.\n\nDistributed under the GPLv3 in the hopes that it will be amusing, but without any warranties of any kind. Use at your own risk.</string>
     <string name="icon_desc">FoD Icon</string>
     <string name="menu_settings">Settings</string>
     <string name="title_activity_about_dialog">AboutDialog</string>
