@@ -1,6 +1,7 @@
 package org.emphie.fod;
 
-import java.io.UnsupportedEncodingException;
+//import java.util.List;
+
 import java.util.List;
 
 import android.annotation.TargetApi;
@@ -13,7 +14,6 @@ import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceFragment;
-import android.util.Base64;
 
 public class preferences extends PreferenceActivity {
 
@@ -49,60 +49,31 @@ public class preferences extends PreferenceActivity {
 			// Build the fragment
 			addPreferencesFromResource(R.xml.preferences);
 
-			// Get a reference to the preferences
+			// Link to sms number for validation
 			SMS_number = (EditTextPreference) getPreferenceScreen().findPreference("SMS_number");
-			// Preference prefxx;
-			// pref_SMS_number =
-			// (Preference)getPreferenceScreen().findPreference("SMS_number");
-
 			SMS_number.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
-
+				private Boolean rtnval = false;
 				@Override
 				public boolean onPreferenceChange(Preference preference, Object newValue) {
-					// my phone number, base 64 encoded for obfuscation
-					String mynumber = "Mjk0ODk1MTUw";
-					String alexnumber = "Mjc0NDQwNzU5";
-					String newnumber;
-					Integer newlen;
-					Integer mylen;
-					byte[] byteArray;
-					Boolean rtnval = true;
-
-					byteArray = Base64.decode(mynumber, Base64.DEFAULT);
-					try {
-						mynumber = new String(byteArray, "UTF-8");
-					} catch (UnsupportedEncodingException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					byteArray = Base64.decode(alexnumber, Base64.DEFAULT);
-					try {
-						alexnumber = new String(byteArray, "UTF-8");
-					} catch (UnsupportedEncodingException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					newnumber = newValue.toString();
-					newnumber.replace(" ", "");
-					newlen = newnumber.length();
-					mylen = mynumber.length();
-					if (newlen >= mylen) {
-						newnumber = newnumber.substring(newlen - mylen, newlen);
-						if (newlen != 0 & newlen > 9 & (newnumber.equals(mynumber)) | newnumber.equals(alexnumber)) {
-							final AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-							if (FoDActivity.isdebug(getActivity())) {
-								builder.setTitle("Allowed for debug...");
-								builder.setMessage("It's my app; you really thought that'd work? Well, OK, but just for a debug build");
-
-							} else {
-								builder.setTitle("no No NO!");
-								builder.setMessage("It's my app; you really thought that'd work? Nice try Bozo.");
-								rtnval = false;
-
-							}
-							builder.setPositiveButton(android.R.string.ok, null);
-							builder.show();
+					final AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+					if (FoDActivity.valid_victim(getActivity(), (String) newValue)) {
+						// valid number
+						rtnval = true;
+					} else {
+						// invalid number
+						if (FoDActivity.isdebug(getActivity())) {
+							// but it's ok because we're debugging
+							builder.setMessage("Well, OK, but just for a debug build");
+							builder.setTitle("Allowed for debug... But don't be a cunt!");
+							rtnval = true;
+						} else {
+							// invalid number message
+							builder.setTitle("no No NO!");
+							builder.setMessage("It's my app; you really thought that'd work? Nice try Bozo.");
+							rtnval = false;
 						}
+						builder.setPositiveButton(android.R.string.ok, null);
+						builder.show();
 					}
 					return rtnval;
 				}

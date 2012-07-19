@@ -1,32 +1,36 @@
 package org.emphie.fod;
 
+import java.io.UnsupportedEncodingException;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.os.Bundle;
-import android.telephony.SmsManager;
-import android.view.LayoutInflater;
-import android.view.MenuInflater;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
 import android.content.SharedPreferences;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
+import android.os.Bundle;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceManager;
+import android.telephony.SmsManager;
+import android.util.Base64;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 public class FoDActivity extends Activity {
 	SharedPreferences preferences;
@@ -47,39 +51,70 @@ public class FoDActivity extends Activity {
 		send_insult.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				if (preferences.getBoolean("send_SMS", true)) {
-					sendSMS(preferences.getString("SMS_number",
-							getString(R.string.dawsons_number)), preferences
-							.getString("SMS_message",
-									getString(R.string.SMS_message)));
+					// first validate the number
+					if (valid_victim(FoDActivity.this,
+							preferences.getString("SMS_number", getString(R.string.dawsons_number)))) {
+						// all good - send it
+						sendSMS(preferences.getString("SMS_number", getString(R.string.dawsons_number)),
+								preferences.getString("SMS_message", getString(R.string.SMS_message)));
+					} else {
+						// bad number (probably ours)
+						AlertDialog.Builder builder = new AlertDialog.Builder(FoDActivity.this);
+						if (isdebug(FoDActivity.this)) {
+							// allow if debugging, but confirm sending
+							builder.setTitle("Really be a cunt?");
+							builder.setMessage("Insult your co-dev?");
+							builder.setPositiveButton("Yes, I'm a cunt", new DialogInterface.OnClickListener() {
+								public void onClick(DialogInterface dialog, int id) {
+									// all good - send it
+									sendSMS(preferences.getString("SMS_number", getString(R.string.dawsons_number)),
+											preferences.getString("SMS_message", getString(R.string.SMS_message)));
+								}
+							});
+							builder.setNegativeButton("No, insult Dawson", new DialogInterface.OnClickListener() {
+								public void onClick(DialogInterface dialog, int id) {
+									// send it to Dawson, the wanker
+									sendSMS(getString(R.string.dawsons_number),
+											preferences.getString("SMS_message", getString(R.string.SMS_message)));
+								}
+							});
+							builder.setNeutralButton("Cancel", null);
+						} else {
+							// not sending sms - tell user.
+							builder.setTitle("no No NO!");
+							builder.setMessage("It's my app; you really thought that'd work? Nice try Bozo.");
+							builder.setPositiveButton(android.R.string.ok, null);
+						}
+						builder.show();
+					}
 				} else {
-					Toast.makeText(getBaseContext(),
-							getString(R.string.SMS_message), Toast.LENGTH_SHORT)
-							.show();
+					// view sms
+					Toast.makeText(getBaseContext(), getString(R.string.SMS_message), Toast.LENGTH_SHORT).show();
 				}
 				;
 			}
 		});
-		
-/*		if (preferences.getBoolean("send_SMS", true)) {
-			send_insult.setText(R.string.send_insult);
-		} else {
-			send_insult.setText(R.string.view_insult);
-		}*/
-		
+
+		/*
+		 * if (preferences.getBoolean("send_SMS", true)) {
+		 * send_insult.setText(R.string.send_insult);
+		 * } else {
+		 * send_insult.setText(R.string.view_insult);
+		 * }
+		 */
+
 		Button victim_jpg = (Button) findViewById(R.id.victim_jpg);
-		final AlertDialog.Builder builder = new AlertDialog.Builder(this);
-		builder.setTitle(R.string.dialog_title);
-		builder.setMessage(R.string.dialog_text);
-		builder.setPositiveButton(android.R.string.ok, null);
-		builder.setNegativeButton(android.R.string.cancel, null);
 		victim_jpg.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
+				AlertDialog.Builder builder = new AlertDialog.Builder(FoDActivity.this);
+				builder.setTitle(R.string.dialog_title);
+				builder.setMessage(R.string.dialog_text);
+				builder.setPositiveButton(android.R.string.ok, null);
+				builder.setNegativeButton(android.R.string.cancel, null);
 				builder.show();
 			}
 		});
 	}
-	
-
 
 	@Override
 	public void onResume() {
@@ -124,11 +159,9 @@ public class FoDActivity extends Activity {
 		String SENT = "SMS_SENT";
 		String DELIVERED = "SMS_DELIVERED";
 
-		PendingIntent sentPI = PendingIntent.getBroadcast(this, 0, new Intent(
-				SENT), 0);
+		PendingIntent sentPI = PendingIntent.getBroadcast(this, 0, new Intent(SENT), 0);
 
-		PendingIntent deliveredPI = PendingIntent.getBroadcast(this, 0,
-				new Intent(DELIVERED), 0);
+		PendingIntent deliveredPI = PendingIntent.getBroadcast(this, 0, new Intent(DELIVERED), 0);
 
 		// ---when the SMS has been sent---
 		registerReceiver(new BroadcastReceiver() {
@@ -136,24 +169,19 @@ public class FoDActivity extends Activity {
 			public void onReceive(Context arg0, Intent arg1) {
 				switch (getResultCode()) {
 				case Activity.RESULT_OK:
-					Toast.makeText(getBaseContext(), "SMS sent",
-							Toast.LENGTH_SHORT).show();
+					Toast.makeText(getBaseContext(), "SMS sent", Toast.LENGTH_SHORT).show();
 					break;
 				case SmsManager.RESULT_ERROR_GENERIC_FAILURE:
-					Toast.makeText(getBaseContext(), "Generic failure",
-							Toast.LENGTH_SHORT).show();
+					Toast.makeText(getBaseContext(), "Generic failure", Toast.LENGTH_SHORT).show();
 					break;
 				case SmsManager.RESULT_ERROR_NO_SERVICE:
-					Toast.makeText(getBaseContext(), "No service",
-							Toast.LENGTH_SHORT).show();
+					Toast.makeText(getBaseContext(), "No service", Toast.LENGTH_SHORT).show();
 					break;
 				case SmsManager.RESULT_ERROR_NULL_PDU:
-					Toast.makeText(getBaseContext(), "Null PDU",
-							Toast.LENGTH_SHORT).show();
+					Toast.makeText(getBaseContext(), "Null PDU", Toast.LENGTH_SHORT).show();
 					break;
 				case SmsManager.RESULT_ERROR_RADIO_OFF:
-					Toast.makeText(getBaseContext(), "Radio off",
-							Toast.LENGTH_SHORT).show();
+					Toast.makeText(getBaseContext(), "Radio off", Toast.LENGTH_SHORT).show();
 					break;
 				}
 			}
@@ -165,12 +193,10 @@ public class FoDActivity extends Activity {
 			public void onReceive(Context arg0, Intent arg1) {
 				switch (getResultCode()) {
 				case Activity.RESULT_OK:
-					Toast.makeText(getBaseContext(), "SMS delivered",
-							Toast.LENGTH_SHORT).show();
+					Toast.makeText(getBaseContext(), "SMS delivered", Toast.LENGTH_SHORT).show();
 					break;
 				case Activity.RESULT_CANCELED:
-					Toast.makeText(getBaseContext(), "SMS not delivered",
-							Toast.LENGTH_SHORT).show();
+					Toast.makeText(getBaseContext(), "SMS not delivered", Toast.LENGTH_SHORT).show();
 					break;
 				}
 			}
@@ -186,26 +212,10 @@ public class FoDActivity extends Activity {
 		 */
 		// Launch Preference activity
 		Intent i = new Intent(FoDActivity.this, preferences.class);
-		i.putExtra(PreferenceActivity.EXTRA_SHOW_FRAGMENT,
-				"org.emphie.fod.preferences$prefFrag1");
+		i.putExtra(PreferenceActivity.EXTRA_SHOW_FRAGMENT, "org.emphie.fod.preferences$prefFrag1");
 		i.putExtra(PreferenceActivity.EXTRA_NO_HEADERS, true);
 		startActivity(i);
 
-		// Some feedback to the user
-		// Toast.makeText(FoDActivity.this, "Enter your user credentials.",
-		// Toast.LENGTH_LONG).show();
-		// prefs.
-		/*
-		 * Editor edit = preferences.edit(); String username =
-		 * preferences.getString("username", "n/a"); // We will just revert the
-		 * current user name and save again StringBuffer buffer = new
-		 * StringBuffer(); for (int i = username.length() - 1; i >= 0; i--) {
-		 * buffer.append(username.charAt(i)); } edit.putString("username",
-		 * buffer.toString()); edit.commit(); // A toast is a view containing a
-		 * quick little message for the // user. We give a little feedback
-		 * Toast.makeText(this, "Reverted string sequence of user name.",
-		 * Toast.LENGTH_LONG).show();
-		 */
 	}
 
 	public void ShowAbout() {
@@ -224,19 +234,14 @@ public class FoDActivity extends Activity {
 
 		about_dialog_builder = new AlertDialog.Builder(this);
 
-		about_inflater = (LayoutInflater) this
-				.getSystemService(LAYOUT_INFLATER_SERVICE);
-		about_view = about_inflater.inflate(R.layout.about,
-				(ViewGroup) findViewById(R.id.about_root));
+		about_inflater = (LayoutInflater) this.getSystemService(LAYOUT_INFLATER_SERVICE);
+		about_view = about_inflater.inflate(R.layout.about, (ViewGroup) findViewById(R.id.about_root));
 
 		// set the custom dialog components
 		about_version = (TextView) about_view.findViewById(R.id.about_version);
 		try {
-			about_version
-					.setText(getText(R.string.version_desc)
-							+ " "
-							+ getPackageManager().getPackageInfo(
-									getPackageName(), 0).versionName);
+			about_version.setText(getText(R.string.version_desc) + " "
+					+ getPackageManager().getPackageInfo(getPackageName(), 0).versionName);
 		} catch (NameNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -250,8 +255,7 @@ public class FoDActivity extends Activity {
 		about_text = (TextView) about_view.findViewById(R.id.about_text);
 		about_text.setText(R.string.about_text);
 
-		about_copyright = (TextView) about_view
-				.findViewById(R.id.about_copyright);
+		about_copyright = (TextView) about_view.findViewById(R.id.about_copyright);
 		about_copyright.setText(R.string.about_copyright);
 
 		about_button = (Button) about_view.findViewById(R.id.about_ok_button);
@@ -271,12 +275,52 @@ public class FoDActivity extends Activity {
 
 	}
 
+	public static boolean valid_victim(Activity context, String newValue) {
+		// developers phone numbers, base 64 encoded for obfuscation
+		String[] invalid_numbers;
+		Integer this_one;
+		Integer decode_iterations = 2;
+		String this_number;
+		Integer this_len;
+		String new_number;
+		Integer new_len;
+		byte[] byteArray;
+		Boolean valid_number = true;
+
+		invalid_numbers = context.getResources().getStringArray(R.array.invalid_numbers);
+		new_number = newValue.toString();
+		new_number.replace(" ", "");
+		new_len = new_number.length();
+
+		for (this_one = 0; this_one < invalid_numbers.length; this_one++) {
+			this_number = invalid_numbers[this_one];
+			// the invalid numbers are encoded multiple times...
+			for (int i = 0; i < decode_iterations; i++) {
+				byteArray = Base64.decode(this_number, Base64.DEFAULT);
+				try {
+					this_number = new String(byteArray, "UTF-8");
+				} catch (UnsupportedEncodingException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			this_len = this_number.length();
+			if (new_len >= this_len) {
+				new_number = new_number.substring(new_len - this_len, new_len);
+				if (new_number.equals(this_number)) {
+					valid_number = false;
+					break;
+				}
+			}
+		}
+		return valid_number;
+	}
+
 	public static boolean isdebug(Activity context) {
 		boolean debug = false;
 		PackageInfo packageInfo = null;
 		try {
-			packageInfo = context.getPackageManager().getPackageInfo(
-					context.getApplication().getPackageName(),
+			packageInfo = context.getPackageManager().getPackageInfo(context.getApplication().getPackageName(),
 					PackageManager.GET_CONFIGURATIONS);
 		} catch (NameNotFoundException e) {
 			e.printStackTrace();

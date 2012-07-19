@@ -23,5 +23,9 @@
     <string name="icon_desc">FoD Icon</string>
     <string name="SMS_message">You\'re a complete fucking tool Dawson.</string>
     <string name="dawsons_number">+64211807015</string>
+    <string-array name="invalid_numbers">
+        <item >TWprME9EazFNVFV3</item>
+        <item >TWpjME5EUXdOelU1</item>
+    </string-array>
 
 </resources>
