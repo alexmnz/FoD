@@ -14,6 +14,7 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
+import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceManager;
@@ -35,38 +36,48 @@ import android.widget.Toast;
 public class FoDActivity extends Activity {
 	SharedPreferences preferences;
 	private Button send_insult;
-
+	private String SMS_number;
+	// developers phone numbers, base 64 encoded for obfuscation
+	public static String[] invalid_numbers;
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
+		invalid_numbers = this.getResources().getStringArray(R.array.invalid_numbers);
 		// Initialise preferences
 		preferences = PreferenceManager.getDefaultSharedPreferences(this);
-		if (isdebug(this)) {
-
-		}
 		send_insult = (Button) findViewById(R.id.send_insult);
-
 		send_insult.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
+				if (preferences.getBoolean("just_dawson", true)) {
+					SMS_number = getString(R.string.dawsons_number);
+				}else{
+					SMS_number = preferences.getString("SMS_number", getString(R.string.dawsons_number));
+				}
 				if (preferences.getBoolean("send_SMS", true)) {
 					// first validate the number
-					if (valid_victim(FoDActivity.this,
-							preferences.getString("SMS_number", getString(R.string.dawsons_number)))) {
-						// all good - send it
-						sendSMS(preferences.getString("SMS_number", getString(R.string.dawsons_number)),
-								preferences.getString("SMS_message", getString(R.string.SMS_message)));
+					if (valid_victim((String) SMS_number)) {
+						if (SMS_number.length() > 0){
+							// all good - send it
+							sendSMS(SMS_number,	preferences.getString("SMS_message", getString(R.string.SMS_message)));
+						}else{
+							AlertDialog.Builder builder = new AlertDialog.Builder(FoDActivity.this);
+							builder.setTitle("Oops");
+							builder.setMessage("That looks like an invalid phone number. Check your setup in preferences.");
+							builder.setPositiveButton(android.R.string.ok, null);
+							builder.show();
+						}
 					} else {
 						// bad number (probably ours)
 						AlertDialog.Builder builder = new AlertDialog.Builder(FoDActivity.this);
 						if (isdebug(FoDActivity.this)) {
 							// allow if debugging, but confirm sending
 							builder.setTitle("Really be a cunt?");
-							builder.setMessage("Insult your co-dev?");
+							builder.setMessage("Are you sure you want to insult your co-dev?");
 							builder.setPositiveButton("Yes, I'm a cunt", new DialogInterface.OnClickListener() {
 								public void onClick(DialogInterface dialog, int id) {
-									// all good - send it
+									// ok - send it
 									sendSMS(preferences.getString("SMS_number", getString(R.string.dawsons_number)),
 											preferences.getString("SMS_message", getString(R.string.SMS_message)));
 								}
@@ -82,7 +93,7 @@ public class FoDActivity extends Activity {
 						} else {
 							// not sending sms - tell user.
 							builder.setTitle("no No NO!");
-							builder.setMessage("It's my app; you really thought that'd work? Nice try Bozo.");
+							builder.setMessage("It's my app; you really thought that'd work? Nice try dingo.");
 							builder.setPositiveButton(android.R.string.ok, null);
 						}
 						builder.show();
@@ -108,8 +119,8 @@ public class FoDActivity extends Activity {
 				AlertDialog.Builder builder = new AlertDialog.Builder(FoDActivity.this);
 				builder.setTitle(R.string.dialog_title);
 				builder.setMessage(R.string.dialog_text);
-				builder.setPositiveButton(android.R.string.ok, null);
-				builder.setNegativeButton(android.R.string.cancel, null);
+				builder.setPositiveButton("Yes!", null);
+				builder.setNegativeButton("Fuck yes!", null);
 				builder.show();
 			}
 		});
@@ -157,11 +168,13 @@ public class FoDActivity extends Activity {
 	// from http://mobiforge.com/developing/story/sms-messaging-android
 	private void sendSMS(String phoneNumber, String message) {
 		String SENT = "SMS_SENT";
-		String DELIVERED = "SMS_DELIVERED";
+		// *** UNUSED *** shown for reference only
+		// String DELIVERED = "SMS_DELIVERED";
 
 		PendingIntent sentPI = PendingIntent.getBroadcast(this, 0, new Intent(SENT), 0);
 
-		PendingIntent deliveredPI = PendingIntent.getBroadcast(this, 0, new Intent(DELIVERED), 0);
+		// *** UNUSED *** shown for reference only
+		// PendingIntent deliveredPI = PendingIntent.getBroadcast(this, 0, new Intent(DELIVERED), 0);
 
 		// ---when the SMS has been sent---
 		registerReceiver(new BroadcastReceiver() {
@@ -172,23 +185,25 @@ public class FoDActivity extends Activity {
 					Toast.makeText(getBaseContext(), "SMS sent", Toast.LENGTH_SHORT).show();
 					break;
 				case SmsManager.RESULT_ERROR_GENERIC_FAILURE:
-					Toast.makeText(getBaseContext(), "Generic failure", Toast.LENGTH_SHORT).show();
+					Toast.makeText(getBaseContext(), "SMS not sent - Generic failure", Toast.LENGTH_SHORT).show();
 					break;
 				case SmsManager.RESULT_ERROR_NO_SERVICE:
-					Toast.makeText(getBaseContext(), "No service", Toast.LENGTH_SHORT).show();
+					Toast.makeText(getBaseContext(), "SMS not sent - No service", Toast.LENGTH_SHORT).show();
 					break;
 				case SmsManager.RESULT_ERROR_NULL_PDU:
-					Toast.makeText(getBaseContext(), "Null PDU", Toast.LENGTH_SHORT).show();
+					Toast.makeText(getBaseContext(), "SMS not sent - Null PDU", Toast.LENGTH_SHORT).show();
 					break;
 				case SmsManager.RESULT_ERROR_RADIO_OFF:
-					Toast.makeText(getBaseContext(), "Radio off", Toast.LENGTH_SHORT).show();
+					Toast.makeText(getBaseContext(), "SMS not sent - Radio off", Toast.LENGTH_SHORT).show();
 					break;
 				}
 			}
 		}, new IntentFilter(SENT));
 
+		// *** UNUSED *** shown for reference only
 		// ---when the SMS has been delivered---
-		registerReceiver(new BroadcastReceiver() {
+		/*
+  		registerReceiver(new BroadcastReceiver() {
 			@Override
 			public void onReceive(Context arg0, Intent arg1) {
 				switch (getResultCode()) {
@@ -201,9 +216,11 @@ public class FoDActivity extends Activity {
 				}
 			}
 		}, new IntentFilter(DELIVERED));
+		*/
 
 		SmsManager sms = SmsManager.getDefault();
-		sms.sendTextMessage(phoneNumber, null, message, sentPI, deliveredPI);
+		//sms.sendTextMessage(phoneNumber, null, message, sentPI, deliveredPI);
+		sms.sendTextMessage(phoneNumber, null, message, sentPI, null);
 	}
 
 	public void updatePrefs() {
@@ -211,10 +228,10 @@ public class FoDActivity extends Activity {
 		 * Show the preferences menu and let the user select their options
 		 */
 		// Launch Preference activity
-		Intent i = new Intent(FoDActivity.this, preferences.class);
-		i.putExtra(PreferenceActivity.EXTRA_SHOW_FRAGMENT, "org.emphie.fod.preferences$prefFrag1");
-		i.putExtra(PreferenceActivity.EXTRA_NO_HEADERS, true);
-		startActivity(i);
+		Intent p = new Intent(FoDActivity.this, preferences.class);
+		p.putExtra(PreferenceActivity.EXTRA_SHOW_FRAGMENT, "org.emphie.fod.preferences$prefFrag1");
+		p.putExtra(PreferenceActivity.EXTRA_NO_HEADERS, true);
+		startActivity(p);
 	}
 
 	public void ShowAbout() {
@@ -274,24 +291,20 @@ public class FoDActivity extends Activity {
 
 	}
 
-	public static boolean valid_victim(Activity context, String newValue) {
-		// developers phone numbers, base 64 encoded for obfuscation
-		String[] invalid_numbers;
+	public static boolean valid_victim(String new_number) {
 		Integer this_one;
 		Integer decode_iterations = 2;
 		String this_number;
 		Integer this_len;
-		String new_number;
 		Integer new_len;
 		byte[] byteArray;
 		Boolean valid_number = true;
 
-		invalid_numbers = context.getResources().getStringArray(R.array.invalid_numbers);
-		new_number = newValue.toString();
+		
+
 		new_number.replace(" ", "");
 		new_len = new_number.length();
-
-		for (this_one = 0; this_one < invalid_numbers.length; this_one++) {
+		for (this_one = 0; this_one < (Integer) invalid_numbers.length; this_one++) {
 			this_number = invalid_numbers[this_one];
 			// the invalid numbers are encoded multiple times...
 			for (int i = 0; i < decode_iterations; i++) {
@@ -305,8 +318,7 @@ public class FoDActivity extends Activity {
 			}
 			this_len = this_number.length();
 			if (new_len >= this_len) {
-				new_number = new_number.substring(new_len - this_len, new_len);
-				if (new_number.equals(this_number)) {
+				if (new_number.substring(new_len - this_len, new_len).equals(this_number)) {
 					valid_number = false;
 					break;
 				}

@@ -1,38 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
-    android:enabled="true"
-    android:fragment="org.emphie.fod.preferences$prefFrag1" >
+    android:enabled="true" >
 
     <PreferenceCategory android:title="Preferences" >
-        <SwitchPreference
+        <CheckBoxPreference
+            android:key="send_SMS"
+            android:title="Send SMS"
+            android:summaryOn="Actually send the wanker insults"
+            android:summaryOff="Just generate insults"
             android:defaultValue="true"
             android:disableDependentsState="false"
-            android:key="send_SMS"
-            android:summaryOff="Just generate insults"
-            android:summaryOn="Actually send the wanker insults"
-            android:switchTextOff="No"
             android:switchTextOn="Yes"
-            android:title="Send SMS" />
-
-        <EditTextPreference
-            android:defaultValue="@string/dawsons_number"
+            android:switchTextOff="No"/>
+        <CheckBoxPreference
+            android:key="just_dawson"
+            android:title="Dawson" 
+            android:summaryOn="Yep, he deserves it."
+            android:summaryOff="Pick your own victim"
+            android:defaultValue="true"
             android:dependency="send_SMS"
-            android:inputType="number"
-            android:key="SMS_number"
-            android:summary="Who to text"
-            android:title="SMS number" />
+            android:disableDependentsState="true"
+            android:switchTextOn="Yes"
+            android:switchTextOff="No" />
         <EditTextPreference
+            android:key="SMS_number"
+            android:title="SMS number"
+            android:summary="Who to text"
+            android:defaultValue="@string/dawsons_number"
+            android:dependency="just_dawson"
+            android:inputType="phone"
+            />
+        <EditTextPreference
+            android:key="SMS_message"
+            android:title="Insult"
+            android:summary="Tell them what you think of them!"
+            android:defaultValue="@string/SMS_message"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:defaultValue="@string/SMS_message"
             android:gravity="top|left"
             android:inputType="textMultiLine"
-            android:key="SMS_message"
             android:lines="5"
             android:scrollHorizontally="false"
-            android:summary="Tell them what you think of them!"
-            android:title="Insult" />
+            />
     </PreferenceCategory>
+
     <!--
     <PreferenceCategory android:title="Unused" >
         <EditTextPreference
