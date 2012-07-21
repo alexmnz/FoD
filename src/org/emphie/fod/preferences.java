@@ -253,8 +253,8 @@ public class preferences extends PreferenceActivity {
 				// valid number, well, close enough
 				rtnval = true;
 			} else {
-				builder.setTitle("Oops");
-				builder.setMessage("That looks like an invalid phone number. Have another go.");
+				builder.setTitle(R.string.bad_number_title);
+				builder.setMessage(R.string.bad_number_message);
 				builder.setPositiveButton(android.R.string.ok, null);
 				builder.show();
 				rtnval = false;
@@ -268,8 +268,8 @@ public class preferences extends PreferenceActivity {
 				rtnval = true;
 			} else {
 				// invalid number message
-				builder.setTitle("no No NO!");
-				builder.setMessage("It's my app; you really thought that'd work? Nice try dingo.");
+				builder.setTitle(R.string.banned_number_title);
+				builder.setMessage(R.string.banned_number_message);
 				rtnval = false;
 			}
 			builder.setPositiveButton(android.R.string.ok, null);

@@ -1,9 +1,11 @@
 package org.emphie.fod;
 
 import java.io.UnsupportedEncodingException;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.PendingIntent;
+import android.app.ProgressDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -14,7 +16,6 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
-import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceManager;
@@ -63,8 +64,8 @@ public class FoDActivity extends Activity {
 							sendSMS(SMS_number,	preferences.getString("SMS_message", getString(R.string.SMS_message)));
 						}else{
 							AlertDialog.Builder builder = new AlertDialog.Builder(FoDActivity.this);
-							builder.setTitle("Oops");
-							builder.setMessage("That looks like an invalid phone number. Check your setup in preferences.");
+							builder.setTitle(R.string.bad_number_title);
+							builder.setMessage(R.string.bad_number_message);
 							builder.setPositiveButton(android.R.string.ok, null);
 							builder.show();
 						}
@@ -92,8 +93,8 @@ public class FoDActivity extends Activity {
 							builder.setNeutralButton("Cancel", null);
 						} else {
 							// not sending sms - tell user.
-							builder.setTitle("no No NO!");
-							builder.setMessage("It's my app; you really thought that'd work? Nice try dingo.");
+							builder.setTitle(R.string.banned_number_title);
+							builder.setMessage(R.string.banned_number_message);
 							builder.setPositiveButton(android.R.string.ok, null);
 						}
 						builder.show();
@@ -168,6 +169,24 @@ public class FoDActivity extends Activity {
 	// from http://mobiforge.com/developing/story/sms-messaging-android
 	private void sendSMS(String phoneNumber, String message) {
 		String SENT = "SMS_SENT";
+
+		/*
+		 * final AlertDialog.Builder progress_dialog_builder;
+		 * final AlertDialog progress_dialog;
+		 * LayoutInflater inflater;
+		 * View progress_view;
+		 * inflater = (LayoutInflater)
+		 * this.getSystemService(LAYOUT_INFLATER_SERVICE);
+		 * progress_view = inflater.inflate(R.layout.progress_overlay,
+		 * (ViewGroup) findViewById(R.id.progress_frame));
+		 * progress_dialog_builder = new AlertDialog.Builder(FoDActivity.this);
+		 * progress_dialog_builder.setView(progress_view);
+		 * progress_dialog = progress_dialog_builder.create();
+		 */
+		final ProgressDialog dialog = new ProgressDialog(this);
+		dialog.setMessage("Sending...");
+		dialog.setIndeterminate(true);
+		// dialog.setCancelable(true);
 		// *** UNUSED *** shown for reference only
 		// String DELIVERED = "SMS_DELIVERED";
 
@@ -197,6 +216,7 @@ public class FoDActivity extends Activity {
 					Toast.makeText(getBaseContext(), "SMS not sent - Radio off", Toast.LENGTH_SHORT).show();
 					break;
 				}
+				dialog.dismiss();
 			}
 		}, new IntentFilter(SENT));
 
@@ -218,8 +238,16 @@ public class FoDActivity extends Activity {
 		}, new IntentFilter(DELIVERED));
 		*/
 
+		dialog.show();
+
 		SmsManager sms = SmsManager.getDefault();
 		//sms.sendTextMessage(phoneNumber, null, message, sentPI, deliveredPI);
+		try {
+			Thread.sleep(5000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		sms.sendTextMessage(phoneNumber, null, message, sentPI, null);
 	}
 
