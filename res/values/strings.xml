@@ -32,6 +32,22 @@
     <string name="dawsons_number">+64211807015</string>
     <string name="SMS_message">You\'re a complete fucking tool Dawson.</string>
 
+    <string-array name="SMS_messages">
+        <item>Your mother wears too much perfume.</item>
+        <item>You\'re a complete fucking tool Dawson.</item>
+        <item>Even your dog thinks you\'re a twat.</item>
+        <item>Twat!</item>
+        <item>Scheide!</item>
+        <item>Cunt.</item>
+        <item>A boiled potato has more personality than you.</item>
+        <item>If a mollusk could speak, it\'d say &#8220;Piss off. You\'re an idiot\.&#8221;</item>
+        <item>Have you been told today?</item>
+        <item>They\'re watching.</item>
+        <item>They know.</item>
+        <item>Is it time to move your spare key?</item>
+        <item>You\'re so ugly a starving dingo wouldn\'t eat your baby.</item>
+        </string-array>
+    
     <!-- Validation errors -->
     <string name="bad_number_title">"Oops"</string>
     <string name="bad_number_message">"That looks like an invalid phone number. Have another go."</string>
@@ -47,12 +63,12 @@
 
     <!-- banned phone numbers -->
     <string-array name="invalid_numbers">
-        <item>TWprME9EazFNVFV3</item>
-        <item>TWpjME5EUXdOelU1</item>
-        <item>TWpFNU56a3dOVEk9</item>
+        <item>4VKMJY</item>
+        <item>4JE7UF</item>
+        <item>D3358</item>
     </string-array>
 
     <string name="banned_number_title">"no No NO!"</string>
-    <string name="banned_number_message">"You really thought that'd work? Nice try dingo."</string>
+    <string name="banned_number_message">"You really thought that\'d work? Nice try dingo."</string>
 
 </resources>

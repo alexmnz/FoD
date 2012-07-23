@@ -8,7 +8,7 @@
   
     <item
         android:id="@+id/menu_prefs"
-        android:title="@string/menu_prefs" android:showAsAction="collapseActionView">
+        android:title="@string/menu_prefs" android:showAsAction="ifRoom|collapseActionView">
     </item>
     <item
         android:id="@+id/menu_about"
