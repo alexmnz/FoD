@@ -1,5 +1,7 @@
 package org.emphie.fod;
 
+import java.util.Random;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.PendingIntent;
@@ -36,6 +38,7 @@ public class FoDActivity extends Activity {
 	private String SMS_number;
 	// developers and friends phone numbers, encoded for obfuscation
 	public static String[] invalid_numbers;
+	public static String[] SMS_messages;
 
 	/** Called when the activity is first created. */
 	@Override
@@ -43,6 +46,7 @@ public class FoDActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
 		invalid_numbers = this.getResources().getStringArray(R.array.invalid_numbers);
+		SMS_messages = this.getResources().getStringArray(R.array.SMS_messages);
 		// Initialise preferences
 		preferences = PreferenceManager.getDefaultSharedPreferences(this);
 		send_insult = (Button) findViewById(R.id.send_insult);
@@ -61,7 +65,7 @@ public class FoDActivity extends Activity {
 					if (valid_victim((String) SMS_number)) {
 						if (SMS_number.length() > 0) {
 							// all good - send it
-							sendSMS(SMS_number, preferences.getString("SMS_message", getString(R.string.SMS_message)));
+							sendSMS(SMS_number, get_SMS_message());
 						} else {
 							AlertDialog.Builder builder = new AlertDialog.Builder(FoDActivity.this);
 							builder.setTitle(R.string.bad_number_title);
@@ -80,14 +84,14 @@ public class FoDActivity extends Activity {
 								public void onClick(DialogInterface dialog, int id) {
 									// ok - send it
 									sendSMS(preferences.getString("SMS_number", getString(R.string.dawsons_number)),
-											preferences.getString("SMS_message", getString(R.string.SMS_message)));
+											get_SMS_message());
 								}
 							});
 							builder.setNegativeButton("No, insult Dawson", new DialogInterface.OnClickListener() {
 								public void onClick(DialogInterface dialog, int id) {
 									// send it to Dawson, the wanker
 									sendSMS(getString(R.string.dawsons_number),
-											preferences.getString("SMS_message", getString(R.string.SMS_message)));
+ get_SMS_message());
 								}
 							});
 							builder.setNeutralButton("Cancel", null);
@@ -101,7 +105,8 @@ public class FoDActivity extends Activity {
 					}
 				} else {
 					// view sms
-					Toast.makeText(getBaseContext(), getString(R.string.SMS_message), Toast.LENGTH_SHORT).show();
+					Toast.makeText(getBaseContext(), "&#8220;" + get_SMS_message() + "&#8221;",
+							Toast.LENGTH_SHORT).show();
 				}
 				;
 			}
@@ -162,9 +167,7 @@ public class FoDActivity extends Activity {
 		 */
 		default:
 			if (item.getTitle() == "Contacts") {
-				Intent p = new Intent(FoDActivity.this, SelectContact.class);
-				startActivity(p);
-
+				// TODO
 			}
 			break;
 		}
@@ -192,7 +195,7 @@ public class FoDActivity extends Activity {
 		 */
 		final AlertDialog.Builder err_dialog = new AlertDialog.Builder(this);
 		final ProgressDialog progress_dialog = new ProgressDialog(this);
-		progress_dialog.setMessage("Sending...");
+		progress_dialog.setMessage("Sending &#8220;" + message + "&#8221;");
 		progress_dialog.setIndeterminate(true);
 		// dialog.setCancelable(true);
 		// *** UNUSED *** shown for reference only
@@ -392,5 +395,17 @@ public class FoDActivity extends Activity {
 				debug = false;
 		}
 		return debug;
+	}
+
+	public String get_SMS_message() {
+		String SMS_message = null;
+		if (preferences.getBoolean("random_SMS", true)) {
+			Random r = new Random();
+			int i = r.nextInt(SMS_messages.length + 1);
+			SMS_message = SMS_messages[i];
+		} else {
+			SMS_message = preferences.getString("SMS_message", getString(R.string.SMS_message));
+		}
+		return SMS_message;
 	}
 }
