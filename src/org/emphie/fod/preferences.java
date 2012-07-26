@@ -18,6 +18,7 @@ import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceFragment;
 import android.preference.SwitchPreference;
+import android.view.View;
 
 // Uses reflection to work on older devices
 // Code from: http://www.blackmoonit.com/2012/07/all_api_prefsactivity/
@@ -26,8 +27,6 @@ public class preferences extends PreferenceActivity {
 	protected Method mHasHeaders = null;
 	public static AlertDialog.Builder builder;
 	public static Boolean isdebug;
-
-	// = new AlertDialog.Builder(prefFrag1.this);
 
 	/**
 	 * Checks to see if using new v11+ way of handling PrefsFragments.
@@ -120,10 +119,11 @@ public class preferences extends PreferenceActivity {
 	 * The menus for version 11 and onwards
 	 */
 	@TargetApi(11)
-	public static class prefFrag1 extends PreferenceFragment implements OnSharedPreferenceChangeListener {
+	public static class basics extends PreferenceFragment implements OnSharedPreferenceChangeListener {
 		int os_version = Build.VERSION.SDK_INT;
 		int SWITCH_MIN = 14;
 		private EditTextPreference SMS_number;
+		private View SMS_layout;
 		private CheckBoxPreference just_dawson_check;
 		private SwitchPreference just_dawson_switch;
 		private boolean just_dawson_checked;
@@ -144,7 +144,9 @@ public class preferences extends PreferenceActivity {
 			}
 			// Link to sms number for validation
 			SMS_number = (EditTextPreference) getPreferenceScreen().findPreference("SMS_number");
-			
+			// int int_SMS_layout =
+			// getPreferenceScreen().findPreference("SMS_number").getLayoutResource();
+
 			// handle different OS versions
 			// versions less than 14 don't have testable switch preferences, so use check boxes.
 			if (Build.VERSION.SDK_INT < SWITCH_MIN) {
@@ -157,7 +159,52 @@ public class preferences extends PreferenceActivity {
 			} else {
 				SMS_number.setSummary((CharSequence) SMS_number.getText());
 			}
-			
+			//TODO
+			/*
+			 * final int CONTACT_PICKER_RESULT = 1001;
+			 * Intent contactPickerIntent = new Intent(Intent.ACTION_PICK,
+			 * Contacts.CONTENT_URI);
+			 * startActivityForResult(contactPickerIntent,
+			 * CONTACT_PICKER_RESULT);
+			 * 
+			 * 
+			 * Bundle extras = data.getExtras();
+			 * Set keys = extras.keySet();
+			 * Iterator iterate = keys.iterator();
+			 * while (iterate.hasNext()) {
+			 * String key = iterate.next();
+			 * Log.v(DEBUG_TAG, key + "[" + extras.get(key) + "]");
+			 * }
+			 * Uri result = data.getData();
+			 * Log.v(DEBUG_TAG, "Got a result: "
+			 * + result.toString());
+			 * 
+			 * // query for everything email
+			 * cursor = getContentResolver().query(
+			 * Email.CONTENT_URI, null,
+			 * Email.CONTACT_ID + "=?",
+			 * new String[]{id}, null);
+			 * cursor.moveToFirst();
+			 * String columns[] = cursor.getColumnNames();
+			 * for (String column : columns) {
+			 * int index = cursor.getColumnIndex(column);
+			 * Log.v(DEBUG_TAG, "Column: " + column + " == ["
+			 * + cursor.getString(index) + "]");
+			 * onActivityResult(int requestCode, int resultCode, Intent data) {
+			 * if (resultCode == RESULT_OK) {
+			 * switch (requestCode) {
+			 * case CONTACT_PICKER_RESULT:
+			 * // handle contact results
+			 * break;
+			 * }
+			 * 
+			 * } else {
+			 * // gracefully handle failure
+			 * Log.w(DEBUG_TAG, "Warning: activity result not ok");
+			 * }
+			 * }
+			 */
+//TODO			
 			SMS_number.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
 				@Override
 				public boolean onPreferenceChange(Preference preference, Object newValue) {

@@ -10,6 +10,7 @@ Version		Date	Comment
 6			15-07-12	published on market
 7			19-07-12	preferences working with validation
 8			22-07-12	minor UI improvements
+9			26-07-12	add insult list and randomiser
 -->
 
 <!--
@@ -33,8 +34,8 @@ Version		Date	Comment
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="org.emphie.fod"
     android:installLocation="auto"
-    android:versionCode="8"
-    android:versionName="0.0.5\u03B2" >
+    android:versionCode="9"
+    android:versionName="0.0.6 Beta" >
 
     <!-- \u03B2 is the beta symbol -->
 

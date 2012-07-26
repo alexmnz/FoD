@@ -52,12 +52,15 @@ public class FoDActivity extends Activity {
 		send_insult = (Button) findViewById(R.id.send_insult);
 		send_insult.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
+				// TODO - haptic feedback on send click
 				// TODO - lookup how to get this value at compile time
 				// final int VIRTUAL_KEY = 1;
 				// v.performHapticFeedback(VIRTUAL_KEY);
 				if (preferences.getBoolean("just_dawson", true)) {
 					SMS_number = getString(R.string.dawsons_number);
 				} else {
+					// default to dawsons number if preference is not
+					// initialised yet
 					SMS_number = preferences.getString("SMS_number", getString(R.string.dawsons_number));
 				}
 				if (preferences.getBoolean("send_SMS", true)) {
@@ -90,8 +93,7 @@ public class FoDActivity extends Activity {
 							builder.setNegativeButton("No, insult Dawson", new DialogInterface.OnClickListener() {
 								public void onClick(DialogInterface dialog, int id) {
 									// send it to Dawson, the wanker
-									sendSMS(getString(R.string.dawsons_number),
- get_SMS_message());
+									sendSMS(getString(R.string.dawsons_number), get_SMS_message());
 								}
 							});
 							builder.setNeutralButton("Cancel", null);
@@ -104,9 +106,8 @@ public class FoDActivity extends Activity {
 						builder.show();
 					}
 				} else {
-					// view sms
-					Toast.makeText(getBaseContext(), "&#8220;" + get_SMS_message() + "&#8221;",
-							Toast.LENGTH_SHORT).show();
+					// view message
+					Toast.makeText(getBaseContext(), get_SMS_message(), Toast.LENGTH_LONG).show();
 				}
 				;
 			}
@@ -195,7 +196,7 @@ public class FoDActivity extends Activity {
 		 */
 		final AlertDialog.Builder err_dialog = new AlertDialog.Builder(this);
 		final ProgressDialog progress_dialog = new ProgressDialog(this);
-		progress_dialog.setMessage("Sending &#8220;" + message + "&#8221;");
+		progress_dialog.setMessage("Sending \"" + message + "\"");
 		progress_dialog.setIndeterminate(true);
 		// dialog.setCancelable(true);
 		// *** UNUSED *** shown for reference only
@@ -276,7 +277,7 @@ public class FoDActivity extends Activity {
 		// Launch Preference activity
 
 		Intent p = new Intent(FoDActivity.this, preferences.class);
-		p.putExtra(PreferenceActivity.EXTRA_SHOW_FRAGMENT, "org.emphie.fod.preferences$prefFrag1");
+		p.putExtra(PreferenceActivity.EXTRA_SHOW_FRAGMENT, "org.emphie.fod.preferences$basics");
 		p.putExtra(PreferenceActivity.EXTRA_NO_HEADERS, true);
 		startActivity(p);
 
@@ -401,7 +402,7 @@ public class FoDActivity extends Activity {
 		String SMS_message = null;
 		if (preferences.getBoolean("random_SMS", true)) {
 			Random r = new Random();
-			int i = r.nextInt(SMS_messages.length + 1);
+			int i = r.nextInt(SMS_messages.length);
 			SMS_message = SMS_messages[i];
 		} else {
 			SMS_message = preferences.getString("SMS_message", getString(R.string.SMS_message));

@@ -7,9 +7,8 @@
     <Button
         android:id="@+id/send_insult"
         android:layout_width="164dp"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_weight="5"
         android:text="@string/send_insult" />
 
     <LinearLayout

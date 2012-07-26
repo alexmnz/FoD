@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     android:enabled="true"
-    android:fragment="org.emphie.fod.preferences$prefFrag1" >
+    android:fragment="org.emphie.fod.preferences$basics" >
 
     <PreferenceCategory android:title="Preferences" >
         <SwitchPreference
             android:defaultValue="true"
-            android:disableDependentsState="false"
-            android:key="random_sms"
-            android:summaryOff="Mix it up"
-            android:summaryOn="Custom SMS"
-            android:switchTextOff="No"
+            android:disableDependentsState="true"
+            android:key="random_SMS"
+            android:summaryOn="Mix it up"
+            android:summaryOff="Custom SMS"
             android:switchTextOn="Yes"
+            android:switchTextOff="No"
             android:title="Random" />
 
         <EditTextPreference
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:defaultValue="@string/SMS_message"
-            android:dependency="random_sms"
+            android:dependency="random_SMS"
             android:gravity="top|left"
             android:inputType="textMultiLine"
             android:key="SMS_message"
@@ -47,13 +47,14 @@
             android:switchTextOn="Yes"
             android:title="Dawson" />
 
-        <EditTextPreference
-            android:defaultValue="@string/dawsons_number"
-            android:dependency="just_dawson"
-            android:inputType="phone"
-            android:key="SMS_number"
-            android:summary="Who to text"
-            android:title="SMS number" />
+            <EditTextPreference
+                android:defaultValue="@string/dawsons_number"
+                android:dependency="just_dawson"
+                android:inputType="phone"
+                android:key="SMS_number"
+                android:summary="Who to text"
+                android:title="SMS number" />
+
     </PreferenceCategory>
     <!--
     <PreferenceCategory android:title="Unused" >
