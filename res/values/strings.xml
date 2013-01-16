@@ -21,8 +21,10 @@
 
     <!-- main menu -->
     <string name="menu_manage">Manage Insults</string>
+    <string name="menu_share">Share</string>
     <string name="menu_prefs">Preferences</string>
     <string name="menu_about">About</string>
+    <string name="market_rate">Rate me!</string>
 
     <!-- about dialog box -->
     <string name="about_copyright">Copyright \u00A9 2012 A. Marshall/A. Pelly</string>
@@ -33,6 +35,112 @@
     <string name="SMS_message">&#8220;You\'re a complete fucking tool Dawson.&#8221;</string>
 
     <string-array name="SMS_messages">
+        <item>"Pillow biter"</item>
+        <item>"Quiche eater"</item>
+        <item>"Scrawny eyed wazzock"</item>
+        <item>"Arse bandit"</item>
+        <item>"Toad"</item>
+        <item>"Twerp"</item>
+        <item>"A mud pack is good for the complexion. I suggest you leave it on."</item>
+        <item>"I have heard that you have 2 brains! Unfortunately, one is lost and the other is out looking for it."</item>
+        <item>"I hear you come from a long line of first cousins."</item>
+        <item>"I hear you&#8217;re a cabinetmaker&#8217;s daughter and everyone knows what&#8217;s in your drawers."</item>
+        <item>"I hear you&#8217;re a farmer&#8217;s daughter and that you can&#8217;t keep your calves together."</item>
+        <item>"I hear you&#8217;re a gravedigger&#8217;s daughter and you&#8217;ll lie under any sod."</item>
+        <item>"I heard they had to burn down the school to get you out of the 3rd grade."</item>
+        <item>"I heard you went to a freak show and got in FREE!"</item>
+        <item>"I heard your parents took you to a dog show and you won."</item>
+        <item>"I love what you&#8217;ve done with your hair. How did you get it to come out of one nostril like that?"</item>
+        <item>"I refuse to engage in a battle of wits, as I will not take advantage of the handicapped."</item>
+        <item>"I researched your entire family tree and it seems you were the sap."</item>
+        <item>"I was going to give you a present but I know not how to wrap a bath tub."</item>
+        <item>"I wish your charm could be bottled; then a cork could be put in it."</item>
+        <item>"I would have been your father, but the dog beat me upstairs."</item>
+        <item>"I&#8217;d get more pleasure from running my nostrils down cactus than being with you."</item>
+        <item>"If I could afford the wood, I&#8217;d have your mouth boarded up."</item>
+        <item>"If Moses had seen your face, there would have been another commandment."</item>
+        <item>"If art imitates life, you&#8217;d be a black velvet painting."</item>
+        <item>"If brains were wind, you wouldn&#8217;t have enough to blow your nose."</item>
+        <item>"If fat were gasoline, you&#8217;d have enough to circle the earth 3 TIMES!"</item>
+        <item>"If ignorance is bliss, you must be the happiest person on earth."</item>
+        <item>"If ugly were a crime, you&#8217;d get a life sentence."</item>
+        <item>"If you spoke your mind, you&#8217;d be speechless."</item>
+        <item>"If your conscience could be surgically removed, it would be a minor operation."</item>
+        <item>"Is that your face or are you breaking it in for a bulldog?"</item>
+        <item>"Is that your nose or did you inhale a cantaloupe?"</item>
+        <item>"Litreen lips"</item>
+        <item>"Lizard lips"</item>
+        <item>"Looking at you, I realize what a waste of skin you are."</item>
+        <item>"Maggot muncher"</item>
+        <item>"Odiferous octupus ooze"</item>
+        <item>"One more wrinkle and you&#8217;d pass for a prune."</item>
+        <item>"Our friendship is like that of a dog to a fire hydrant."</item>
+        <item>"Please sit down and take a mess off your feet."</item>
+        <item>"Pompous proliferator of putrid puns"</item>
+        <item>"Snail snot"</item>
+        <item>"So you&#8217;re the one that put the &#8220;P&#8221; in the Gene Pool!"</item>
+        <item>"So. How is that bladder control problem?"</item>
+        <item>"Stagnant pond scum licker"</item>
+        <item>"The eyes are the window to the mind and your eyes look like the holes in a privy."</item>
+        <item>"The only time you ever got to second base was at the petting zoo."</item>
+        <item>"They say Will Rogers never met a man he didn&#8217;t like, obviously he never met you."</item>
+        <item>"Travel broadens a person. You look as if you have been all over the world."</item>
+        <item>"Vulture vomit"</item>
+        <item>"What is that on you head? A hairball from a mountain lion?"</item>
+        <item>"You appear to be the culmination of years of major genetic mishaps."</item>
+        <item>"You are as charming as a dead mouse in a loaf of bread."</item>
+        <item>"You are so dumb, you couldn&#8217;t pour water out of your boots if the instructions were written on the heel."</item>
+        <item>"You are so dumb, you think &#8220;getting lucky&#8221; is finding a penny on the ground."</item>
+        <item>"You are so dumb, you think a blood vessel is some kind of ship."</item>
+        <item>"You are so dumb, you think that martial arts are paintings by the sheriff."</item>
+        <item>"You are so dumb, you thought a buttress was a female goat."</item>
+        <item>"You are so ugly, that in 20 countries it is illegal for you to marry."</item>
+        <item>"You are so ugly, you have put a new definition on road kill."</item>
+        <item>"You are such a sourpuss, that when you suck a lemon the lemon makes a face."</item>
+        <item>"You have about as much class as a lawn flamingo."</item>
+        <item>"You have an hourglass figure. Too bad the sand settled in all the wrong places."</item>
+        <item>"You have been fooled more times than a public welfare worker."</item>
+        <item>"You have less backbone than a chocolate eclair."</item>
+        <item>"You have such a striking face. Tell me, how many times were you struck?"</item>
+        <item>"You have the face of a saint. Saint Bernard, that is."</item>
+        <item>"You have the intellegence of a bucket of rocks."</item>
+        <item>"You have the shape of a stocking filled with dung."</item>
+        <item>"You have the warm personal charm of a millipede."</item>
+        <item>"You know, I do understand you. I have a way with dumb animals."</item>
+        <item>"You look like you&#8217;ve been pulled backward through a knothole."</item>
+        <item>"You look like you&#8217;ve been rode hard and put away wet."</item>
+        <item>"You lost your mind when a butterfly kicked you in the head."</item>
+        <item>"You mother&#8217;s teeth are so yellow, she can spit butter."</item>
+        <item>"You must come from the shallow end of the gene pool."</item>
+        <item>"You must have a very large brain, to hold so much ignorance."</item>
+        <item>"You perplex me; usually someone with your limited physical appeal makes up for it with a REAL personality."</item>
+        <item>"You were so ugly as a child, your mother breast fed you through a straw."</item>
+        <item>"You&#8217;re so dumb, the only thing you got on your IQ test was drool."</item>
+        <item>"You&#8217;re so dumb, you need a cue card to say &#8220;Huh?&#8221;"</item>
+        <item>"You&#8217;re so dumb, you need instructions on how to use a rocking chair."</item>
+        <item>"You&#8217;re so dumb, you think a naval academy is a school for belly-dancers."</item>
+        <item>"You&#8217;re so ugly, that when you went to the zoo, a baboon blew in your ear."</item>
+        <item>"Your breath is so bad, that when you yawn, your teeth duck out of the way."</item>
+        <item>"Your face can shrivel a man like a 3 hour bath."</item>
+        <item>"Your face looks as if you were weaned on a pickle."</item>
+        <item>"Your family tree is nothing but a rest stop for dogs."</item>
+        <item>"Your mother is like a carpenter&#8217;s dream; flat as a board and easy to nail."</item>
+        <item>"Your mother is not really so bad. I hear she would give you the hair off her back."</item>
+        <item>"Your mother is so big, that her graduation picture had to be an aerial view."</item>
+        <item>"Your mother is so fat that before god said, &#8220;Let there be light&#8221; he told her to move out of the way."</item>
+        <item>"Your mother is so fat that she sweats bacon grease."</item>
+        <item>"Your mother is so fat that the back of her neck looks like a package of sausages."</item>
+        <item>"Your mother is so fat, her shadow weighs 50 pounds."</item>
+        <item>"Your mother is so fat, she thinks a balanced meal is a ham in each hand."</item>
+        <item>"Your mother is so fat, she&#8217;s on both sides of the family."</item>
+        <item>"Your mother is so fat, when she sings; it&#8217;s over!"</item>
+        <item>"Your mother is so fat, when she took her clothes to be laundered, they said, &#8220;Sorry, we don&#8217;t do tents.&#8221;"</item>
+        <item>"Your mother is so ugly, her face can stop a sun dial."</item>
+        <item>"Your mother is twice the man you are."</item>
+        <item>"Your mother&#8217;s teeth are so black, she spits ink."</item>
+        <item>"Your sister is so ugly that dogs hump her legs with their eyes closed."</item>
+        <item>"Your simian countenance suggests a heritage unusually rich in species diversity."</item>
+        <item>"Your sister is so ugly, even the tide will not go out with her."</item>
         <item>"Suck butter from my ass"</item>
         <item>"A thousand dicks in your religion"</item>
         <item>"May you be struck by a dick"</item>

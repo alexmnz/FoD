@@ -6,6 +6,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.PendingIntent;
 import android.app.ProgressDialog;
+import android.content.ActivityNotFoundException;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -16,6 +17,7 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
+import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceManager;
@@ -156,12 +158,42 @@ public class FoDActivity extends Activity {
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
+		case R.id.menu_share:
+			Intent shareIntent = new Intent(Intent.ACTION_SEND);
+			shareIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
+			shareIntent.setType("text/plain");
+
+			// For a file in shared storage. For data in private storage, use a
+			// ContentProvider.
+			// shareIntent.putExtra(Intent.EXTRA_STREAM,
+			// Uri.parse("http://fuckoffdawson.com/downloads/fod.apk"));
+			shareIntent.putExtra(Intent.EXTRA_SUBJECT, "Link to Fuck off Dawson");
+			shareIntent.putExtra(Intent.EXTRA_TEXT, "http://fuckoffdawson.com/downloads/fod.apk");
+			startActivity(Intent.createChooser(shareIntent, "Share with?"));
+			break;
 		case R.id.menu_prefs:
-			updatePrefs();
+			/*
+			 * Show the preferences menu and let the user select their options
+			 */
+			Intent pref = new Intent(FoDActivity.this, preferences.class);
+			pref.putExtra(PreferenceActivity.EXTRA_SHOW_FRAGMENT, "org.emphie.fod.preferences$basics");
+			pref.putExtra(PreferenceActivity.EXTRA_NO_HEADERS, true);
+			startActivity(pref);
 			break;
 		case R.id.menu_about:
 			ShowAbout();
 			break;
+		//case R.id.market_rate:
+		//	Uri uri = Uri.parse("market://search?q=pname:" + this.getPackageName());
+		//	Intent rate = new Intent("ACTION_VIEW", uri);
+		//	try {
+		//		startActivity(rate);
+		//	} catch (ActivityNotFoundException e) {
+		//		e.printStackTrace();
+		//		Toast.makeText(getBaseContext(), "Google Play is not installed", Toast.LENGTH_LONG).show();
+		//	}
+		//	break;
+
 		/*
 		 * case R.id.menu_manage: Intent i = new Intent(this, Insults.class);
 		 * startActivity(i); break;
@@ -195,9 +227,12 @@ public class FoDActivity extends Activity {
 		 * progress_dialog = progress_dialog_builder.create();
 		 */
 		final AlertDialog.Builder err_dialog = new AlertDialog.Builder(this);
+		err_dialog.setTitle("Failed");
 		final ProgressDialog progress_dialog = new ProgressDialog(this);
 		progress_dialog.setMessage("Sending \"" + message + "\"");
 		progress_dialog.setIndeterminate(true);
+		progress_dialog.show();
+
 		// dialog.setCancelable(true);
 		// *** UNUSED *** shown for reference only
 		// String DELIVERED = "SMS_DELIVERED";
@@ -233,9 +268,10 @@ public class FoDActivity extends Activity {
 					err_text = "SMS not sent - Radio off";
 					break;
 				}
-				progress_dialog.dismiss();
+				if (progress_dialog.isShowing()) {
+					progress_dialog.dismiss();
+				}
 				if (err_text != null) {
-					err_dialog.setTitle("Failed");
 					err_dialog.setMessage(err_text);
 					err_dialog.show();
 				}
@@ -263,24 +299,10 @@ public class FoDActivity extends Activity {
 		 * }, new IntentFilter(DELIVERED));
 		 */
 
-		progress_dialog.show();
 
-		SmsManager sms = SmsManager.getDefault();
+		SmsManager sms = android.telephony.SmsManager.getDefault();
 		// sms.sendTextMessage(phoneNumber, null, message, sentPI, deliveredPI);
 		sms.sendTextMessage(phoneNumber, null, message, sentPI, null);
-	}
-
-	public void updatePrefs() {
-		/*
-		 * Show the preferences menu and let the user select their options
-		 */
-		// Launch Preference activity
-
-		Intent p = new Intent(FoDActivity.this, preferences.class);
-		p.putExtra(PreferenceActivity.EXTRA_SHOW_FRAGMENT, "org.emphie.fod.preferences$basics");
-		p.putExtra(PreferenceActivity.EXTRA_NO_HEADERS, true);
-		startActivity(p);
-
 	}
 
 	public void ShowAbout() {
