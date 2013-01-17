@@ -7,12 +7,22 @@
 <!--     </item> -->
   
     <item
+        android:id="@+id/menu_share"
+        android:icon="@drawable/ic_action_share"
+        android:title="@string/menu_share"
+        android:showAsAction="ifRoom|collapseActionView">
+    </item>
+    <item
         android:id="@+id/menu_prefs"
-        android:title="@string/menu_prefs" android:showAsAction="collapseActionView">
+        android:title="@string/menu_prefs" android:showAsAction="ifRoom|collapseActionView">
     </item>
     <item
         android:id="@+id/menu_about"
         android:title="@string/menu_about" android:showAsAction="collapseActionView">
     </item>
-
+    <item
+        android:id="@+id/market_rate"
+        android:title="@string/market_rate" android:showAsAction="collapseActionView">
+    </item>
+    
 </menu> 

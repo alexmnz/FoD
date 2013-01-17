@@ -5,29 +5,424 @@
     <color name="green">#00ff00</color>
     <color name="blue">#0000ff</color>
 
+    <!-- Application details -->
     <string name="app_name">FoD</string>
     <string name="app_name_long">Fuck off Dawson</string>
     <string name="version_desc">Version</string>
+    <string name="icon_desc">FoD Icon</string>
+
+    <!-- When clicking dawsons picture -->
     <string name="dialog_title">Dawson is ugly</string>
+    <string name="dialog_text">Yep. That\'s Dawson. What an ugly fucker.</string>
+
+    <!-- send text button -->
     <string name="send_insult">Send Insult</string>
     <string name="view_insult">View Insult</string>
-    <string name="dialog_text">Gosh you are ugly, Click OK or Cancel to agree</string>
-    <string name="no_insults">No Insults set up yet</string>
+
+    <!-- main menu -->
     <string name="menu_manage">Manage Insults</string>
-    <string name="menu_about">About</string>
+    <string name="menu_share">Share</string>
     <string name="menu_prefs">Preferences</string>
+    <string name="menu_about">About</string>
+    <string name="market_rate">Rate me!</string>
+
+    <!-- about dialog box -->
+    <string name="about_copyright">Copyright \u00A9 2012 A. Marshall/A. Pelly</string>
+    <string name="about_text">Some people are just wankers. You really should let them know. It\'ll cheer you up. Trust me!!\n\nCreated using eclipse, github, the android SDK and many, many code snipets from around the web.\n\nSpecial thanks to the Stack Overflow community.\n\nDistributed under the GPLv3 in the hopes that it will be amusing, but without any warranties of any kind. Use at your own risk.</string>
+
+    <!-- some defaults -->
+    <string name="dawsons_number">+64211807015</string>
+    <string name="SMS_message">&#8220;You\'re a complete fucking tool Dawson.&#8221;</string>
+
+    <string-array name="SMS_messages">
+        <item>"Pillow biter"</item>
+        <item>"Quiche eater"</item>
+        <item>"Scrawny eyed wazzock"</item>
+        <item>"Arse bandit"</item>
+        <item>"Toad"</item>
+        <item>"Twerp"</item>
+        <item>"A mud pack is good for the complexion. I suggest you leave it on."</item>
+        <item>"I have heard that you have 2 brains! Unfortunately, one is lost and the other is out looking for it."</item>
+        <item>"I hear you come from a long line of first cousins."</item>
+        <item>"I hear you&#8217;re a cabinetmaker&#8217;s daughter and everyone knows what&#8217;s in your drawers."</item>
+        <item>"I hear you&#8217;re a farmer&#8217;s daughter and that you can&#8217;t keep your calves together."</item>
+        <item>"I hear you&#8217;re a gravedigger&#8217;s daughter and you&#8217;ll lie under any sod."</item>
+        <item>"I heard they had to burn down the school to get you out of the 3rd grade."</item>
+        <item>"I heard you went to a freak show and got in FREE!"</item>
+        <item>"I heard your parents took you to a dog show and you won."</item>
+        <item>"I love what you&#8217;ve done with your hair. How did you get it to come out of one nostril like that?"</item>
+        <item>"I refuse to engage in a battle of wits, as I will not take advantage of the handicapped."</item>
+        <item>"I researched your entire family tree and it seems you were the sap."</item>
+        <item>"I was going to give you a present but I know not how to wrap a bath tub."</item>
+        <item>"I wish your charm could be bottled; then a cork could be put in it."</item>
+        <item>"I would have been your father, but the dog beat me upstairs."</item>
+        <item>"I&#8217;d get more pleasure from running my nostrils down cactus than being with you."</item>
+        <item>"If I could afford the wood, I&#8217;d have your mouth boarded up."</item>
+        <item>"If Moses had seen your face, there would have been another commandment."</item>
+        <item>"If art imitates life, you&#8217;d be a black velvet painting."</item>
+        <item>"If brains were wind, you wouldn&#8217;t have enough to blow your nose."</item>
+        <item>"If fat were gasoline, you&#8217;d have enough to circle the earth 3 TIMES!"</item>
+        <item>"If ignorance is bliss, you must be the happiest person on earth."</item>
+        <item>"If ugly were a crime, you&#8217;d get a life sentence."</item>
+        <item>"If you spoke your mind, you&#8217;d be speechless."</item>
+        <item>"If your conscience could be surgically removed, it would be a minor operation."</item>
+        <item>"Is that your face or are you breaking it in for a bulldog?"</item>
+        <item>"Is that your nose or did you inhale a cantaloupe?"</item>
+        <item>"Litreen lips"</item>
+        <item>"Lizard lips"</item>
+        <item>"Looking at you, I realize what a waste of skin you are."</item>
+        <item>"Maggot muncher"</item>
+        <item>"Odiferous octupus ooze"</item>
+        <item>"One more wrinkle and you&#8217;d pass for a prune."</item>
+        <item>"Our friendship is like that of a dog to a fire hydrant."</item>
+        <item>"Please sit down and take a mess off your feet."</item>
+        <item>"Pompous proliferator of putrid puns"</item>
+        <item>"Snail snot"</item>
+        <item>"So you&#8217;re the one that put the &#8220;P&#8221; in the Gene Pool!"</item>
+        <item>"So. How is that bladder control problem?"</item>
+        <item>"Stagnant pond scum licker"</item>
+        <item>"The eyes are the window to the mind and your eyes look like the holes in a privy."</item>
+        <item>"The only time you ever got to second base was at the petting zoo."</item>
+        <item>"They say Will Rogers never met a man he didn&#8217;t like, obviously he never met you."</item>
+        <item>"Travel broadens a person. You look as if you have been all over the world."</item>
+        <item>"Vulture vomit"</item>
+        <item>"What is that on you head? A hairball from a mountain lion?"</item>
+        <item>"You appear to be the culmination of years of major genetic mishaps."</item>
+        <item>"You are as charming as a dead mouse in a loaf of bread."</item>
+        <item>"You are so dumb, you couldn&#8217;t pour water out of your boots if the instructions were written on the heel."</item>
+        <item>"You are so dumb, you think &#8220;getting lucky&#8221; is finding a penny on the ground."</item>
+        <item>"You are so dumb, you think a blood vessel is some kind of ship."</item>
+        <item>"You are so dumb, you think that martial arts are paintings by the sheriff."</item>
+        <item>"You are so dumb, you thought a buttress was a female goat."</item>
+        <item>"You are so ugly, that in 20 countries it is illegal for you to marry."</item>
+        <item>"You are so ugly, you have put a new definition on road kill."</item>
+        <item>"You are such a sourpuss, that when you suck a lemon the lemon makes a face."</item>
+        <item>"You have about as much class as a lawn flamingo."</item>
+        <item>"You have an hourglass figure. Too bad the sand settled in all the wrong places."</item>
+        <item>"You have been fooled more times than a public welfare worker."</item>
+        <item>"You have less backbone than a chocolate eclair."</item>
+        <item>"You have such a striking face. Tell me, how many times were you struck?"</item>
+        <item>"You have the face of a saint. Saint Bernard, that is."</item>
+        <item>"You have the intellegence of a bucket of rocks."</item>
+        <item>"You have the shape of a stocking filled with dung."</item>
+        <item>"You have the warm personal charm of a millipede."</item>
+        <item>"You know, I do understand you. I have a way with dumb animals."</item>
+        <item>"You look like you&#8217;ve been pulled backward through a knothole."</item>
+        <item>"You look like you&#8217;ve been rode hard and put away wet."</item>
+        <item>"You lost your mind when a butterfly kicked you in the head."</item>
+        <item>"You mother&#8217;s teeth are so yellow, she can spit butter."</item>
+        <item>"You must come from the shallow end of the gene pool."</item>
+        <item>"You must have a very large brain, to hold so much ignorance."</item>
+        <item>"You perplex me; usually someone with your limited physical appeal makes up for it with a REAL personality."</item>
+        <item>"You were so ugly as a child, your mother breast fed you through a straw."</item>
+        <item>"You&#8217;re so dumb, the only thing you got on your IQ test was drool."</item>
+        <item>"You&#8217;re so dumb, you need a cue card to say &#8220;Huh?&#8221;"</item>
+        <item>"You&#8217;re so dumb, you need instructions on how to use a rocking chair."</item>
+        <item>"You&#8217;re so dumb, you think a naval academy is a school for belly-dancers."</item>
+        <item>"You&#8217;re so ugly, that when you went to the zoo, a baboon blew in your ear."</item>
+        <item>"Your breath is so bad, that when you yawn, your teeth duck out of the way."</item>
+        <item>"Your face can shrivel a man like a 3 hour bath."</item>
+        <item>"Your face looks as if you were weaned on a pickle."</item>
+        <item>"Your family tree is nothing but a rest stop for dogs."</item>
+        <item>"Your mother is like a carpenter&#8217;s dream; flat as a board and easy to nail."</item>
+        <item>"Your mother is not really so bad. I hear she would give you the hair off her back."</item>
+        <item>"Your mother is so big, that her graduation picture had to be an aerial view."</item>
+        <item>"Your mother is so fat that before god said, &#8220;Let there be light&#8221; he told her to move out of the way."</item>
+        <item>"Your mother is so fat that she sweats bacon grease."</item>
+        <item>"Your mother is so fat that the back of her neck looks like a package of sausages."</item>
+        <item>"Your mother is so fat, her shadow weighs 50 pounds."</item>
+        <item>"Your mother is so fat, she thinks a balanced meal is a ham in each hand."</item>
+        <item>"Your mother is so fat, she&#8217;s on both sides of the family."</item>
+        <item>"Your mother is so fat, when she sings; it&#8217;s over!"</item>
+        <item>"Your mother is so fat, when she took her clothes to be laundered, they said, &#8220;Sorry, we don&#8217;t do tents.&#8221;"</item>
+        <item>"Your mother is so ugly, her face can stop a sun dial."</item>
+        <item>"Your mother is twice the man you are."</item>
+        <item>"Your mother&#8217;s teeth are so black, she spits ink."</item>
+        <item>"Your sister is so ugly that dogs hump her legs with their eyes closed."</item>
+        <item>"Your simian countenance suggests a heritage unusually rich in species diversity."</item>
+        <item>"Your sister is so ugly, even the tide will not go out with her."</item>
+        <item>"Suck butter from my ass"</item>
+        <item>"A thousand dicks in your religion"</item>
+        <item>"May you be struck by a dick"</item>
+        <item>"My dick in your conscience"</item>
+        <item>"You&#8217;re as thick as a bull&#8217;s walt"</item>
+        <item>"Gobshite"</item>
+        <item>"As Thick As Manure And Only Half As Useful."</item>
+        <item>"Let a hungry Carpathian long-haired she-wolf blow your dick, fuck"</item>
+        <item>"Your mother sucks bears in the forest"</item>
+        <item>"Fuck the 18 generations of your ancestors"</item>
+        <item>"Wear a green hat."</item>
+        <item>"Grandfatherfucker"</item>
+        <item>"Plunger"</item>
+        <item>"Girl who drives a truck"</item>
+        <item>"Corpsefucker"</item>
+        <item>"I&#8217;ll make sarma with your penis&#8217; skin"</item>
+        <item>"Let the rats ejaculate on you."</item>
+        <item>"May God give you to search for your children with a Geiger counter"</item>
+        <item>"The Pope fucks you"</item>
+        <item>"May your house be live on CNN"</item>
+        <item>"Stick your hand in my ass and jerk off with my shit"</item>
+        <item>"Shampoo my dick-hair with your saliva"</item>
+        <item>"Brush your teeth, my dick will be inspecting soon!"</item>
+        <item>"Suck devilcock in hell you faggotdwarf"</item>
+        <item>"Piss into a transformer"</item>
+        <item>"Suck on my hemorrhoids and wait for better days"</item>
+        <item>"May you get fucked by a blind bear"</item>
+        <item>"I dream about farting on you"</item>
+        <item>"Who&#8217;s your daddy?"</item>
+        <item>"&#8220;You&#8217;re a complete fucking tool.&#8221;"</item>
+        <item>"A boiled potato has more personality than you."</item>
+        <item>"All of your ancestors must number in the millions; it&#8217;s hard to believe that many people are to blame for producing you."</item>
+        <item>"All the branches fell off your family tree when you were born"</item>
+        <item>"Are those your tits, or did Laurel and Hardy leave you their heads?"</item>
+        <item>"At your speed you&#8217;d better not stop your mouth too fast or your teeth will fly through your cranium."</item>
+        <item>"Being around you is like having a cancer of the soul."</item>
+        <item>"Can I borrow your face? My arse is on holiday"</item>
+        <item>"Cunt."</item>
+        <item>"Do you have to leave so soon?  I was just about to poison the tea."</item>
+        <item>"Do you still love nature&#8230; despite what it did to you?"</item>
+        <item>"Don&#8217;t you have a terribly empty feeling&#8230; in your skull?"</item>
+        <item>"Don&#8217;t you realize that there are enough people to hate in the world already without your working so hard to give us another?"</item>
+        <item>"Dumb-ass"</item>
+        <item>"Even your dog thinks you&#8217;re a twat."</item>
+        <item>"Ever since I saw your family tree I&#8217;ve wanted to cut it down."</item>
+        <item>"Go away I was looking at something better than you"</item>
+        <item>"Have you been told today?"</item>
+        <item>"Here&#8217;s 20 cents, call all your friends and give me back the change"</item>
+        <item>"Hey I&#8217;m from the ugly face factory. Are you happy with your purchase?"</item>
+        <item>"Hey, you have something on your chin&#8230; 3rd one down"</item>
+        <item>"I admire you because I&#8217;ve never had the courage it takes to be a liar, a thief and a cheat."</item>
+        <item>"I believe in respect for the dead; in fact I could only respect you if you WERE dead."</item>
+        <item>"I don&#8217;t consider you a vulture. I consider you something a vulture would eat."</item>
+        <item>"I hear that when you were a child your mother wanted to hire someone to take care of you but the Mafia wanted too much."</item>
+        <item>"I hear that when your mother first saw you she decided to leave you on the steps of a police station and turn herself in."</item>
+        <item>"I hear the only place you&#8217;re ever invited is outside."</item>
+        <item>"I may be fat but you&#8217;re ugly and I can diet."</item>
+        <item>"I saved your mother&#8217;s life today&#8230; I killed a shit-eating dog on the way over."</item>
+        <item>"I think you should live for the moment. But after that I doubt I&#8217;ll think so."</item>
+        <item>"I would ask how old you are, but I know you can&#8217;t count that high."</item>
+        <item>"I would have been your dad, but the guy in front of me had exact change."</item>
+        <item>"I would like the pleasure of your company but it only gives me displeasure."</item>
+        <item>"I wouldn&#8217;t piss on you, even if you were on fire."</item>
+        <item>"I&#8217;ll hit you so hard by the time you come down, you&#8217;ll need a passport and a plane ticket back!"</item>
+        <item>"I&#8217;ll hit you so hard you &#8217;ll have to take off your shoes to shit!"</item>
+        <item>"I&#8217;ll hit you so hard you&#8217;ll have to unzip your pants to say hi!"</item>
+        <item>"I&#8217;ll hit you so hard your kids will be born dizzy!"</item>
+        <item>"I&#8217;ll hit you so hard your wife will fall!"</item>
+        <item>"I&#8217;m looking forward to the pleasure of your company since I haven&#8217;t had it yet."</item>
+        <item>"I&#8217;ve had many cases of love that were just infatuation, but this hate I feel for you is the real thing."</item>
+        <item>"If I had change for a buck, I could have been your dad!"</item>
+        <item>"If a mollusc could speak, it&#8217;d say &#8220;Piss off. You&#8217;re an idiot&#8221;"</item>
+        <item>"If you ever tax your brain, don&#8217;t charge more than a penny."</item>
+        <item>"If you really want to know about mistakes you should ask your parents"</item>
+        <item>"If you were twice as smart, you&#8217;d still be stupid"</item>
+        <item>"Is it time to move your spare key?"</item>
+        <item>"Is that an accent, or is your mouth just full of sperm?"</item>
+        <item>"Is that your face? Or did your neck just throw up?"</item>
+        <item>"It looks like your face caught on fire and someone tried to put it out with a fork"</item>
+        <item>"It&#8217;s your life&#8230; but I wish you&#8217;d let us have it."</item>
+        <item>"Jesus thinks you&#8217;re a dumbass"</item>
+        <item>"Learn from your parents mistakes&#8230; get sterilized"</item>
+        <item>"Look, you ain’t funny. Your life is the joke."</item>
+        <item>"Looks like you fell out of the ugly tree and hit every branch on the way down"</item>
+        <item>"Man alive! But I wish you weren&#8217;t."</item>
+        <item>"Nice tan, orange is my favourite colour"</item>
+        <item>"No one should be punished for accident of birth but you look too much like a wreck not to be."</item>
+        <item>"Out of 100,000,000 sperm, you were the fastest?"</item>
+        <item>"Scheide!"</item>
+        <item>"Some people are has-beens.  You&#8217;re a never-was."</item>
+        <item>"Stop bullying fat people, they have enough on their plate"</item>
+        <item>"The difference between your mother and a rooster? The rooster says cock-a-doodle-doo, your mother says any-cock&#8217;ll do."</item>
+        <item>"The only positive thing about you is your HIV status"</item>
+        <item>"They know."</item>
+        <item>"They say that beauty is only a light switch away, with your mother I had to use a black light."</item>
+        <item>"They&#8217;re watching."</item>
+        <item>"Twat!"</item>
+        <item>"We all sprang from apes, but you didn&#8217;t spring far enough."</item>
+        <item>"When you get run over by a car it won&#8217;t be listed under accidents."</item>
+        <item>"When you pass away and people ask me what the cause of your death was, I&#8217;ll say your stupidity."</item>
+        <item>"When you were born, the police arrested your dad, the doctor slapped your mother, animal control euthanized your brother, and A&amp;E made a documentary that saved your life."</item>
+        <item>"Why don&#8217;t you check up on eBay and see if they have a life for sale."</item>
+        <item>"Why don&#8217;t you slip into something more comfortable? Like a coma"</item>
+        <item>"Why don’t you shut up and give that hole in your face a chance to heal"</item>
+        <item>"With a face like yours, I wish I was blind"</item>
+        <item>"Yeah you&#8217;re pretty&#8230; pretty stupid"</item>
+        <item>"Yeah you&#8217;re special&#8230; special needs"</item>
+        <item>"You didn&#8217;t fall out of the stupid tree. You got drug through dumb-ass forest."</item>
+        <item>"You have a face only a mother could love&#8230; and she hates it!"</item>
+        <item>"You have nothing to fear from my baser instincts; it&#8217;s my finer ones that tell me to kill you."</item>
+        <item>"You lied you said you were ugly, you&#8217;re not; you&#8217;re hideous"</item>
+        <item>"You must be the arithmetic man;  you add trouble, subtract pleasure, divide attention, and multiply ignorance."</item>
+        <item>"You must have been born on a motorway; that&#8217;s where most accidents happen"</item>
+        <item>"You think you&#8217;re strong, You only smell strong."</item>
+        <item>"You were adopted and never loved."</item>
+        <item>"You were born because your mother didn&#8217;t believe in abortion; now she believes in infanticide."</item>
+        <item>"You were the answer to a prayer. Your parents prayed that the world would be made to suffer and here you came along."</item>
+        <item>"You would look like your mother&#8230; if you grew a moustache gained a few hundred pounds and got a black dress."</item>
+        <item>"You&#8217;ll never be the man your mother is"</item>
+        <item>"You&#8217;re a habit I&#8217;d like to kick; with both feet."</item>
+        <item>"You&#8217;re so dumb it takes you an hour and a half to watch &#8220;60 Minutes&#8221;!"</item>
+        <item>"You&#8217;re so dumb you got blonde roots in your eyeballs."</item>
+        <item>"You&#8217;re so dumb you think Johnny Cash is a pay toilet!"</item>
+        <item>"You&#8217;re so dumb you think socialism means partying!"</item>
+        <item>"You&#8217;re so dumb you wait at a stop sign for it to go green"</item>
+        <item>"You&#8217;re so fake that Barbie is more real than you"</item>
+        <item>"You&#8217;re so fat when I go on Google Earth all I see is your belly button"</item>
+        <item>"You&#8217;re so fat you had to be baptised at Kelly Tarlton&#8217;s"</item>
+        <item>"You&#8217;re so fat you make a hippo look skinny!"</item>
+        <item>"You&#8217;re so fat, a picture of you would fall off the wall!"</item>
+        <item>"You&#8217;re so fat, if you got your shoes shined, you&#8217;d have to take his word for it!"</item>
+        <item>"You&#8217;re so fat, if you weighed five more pounds, you could get group insurance!"</item>
+        <item>"You&#8217;re so fat, that you have to strap a beeper on your belt to warn people you are backing up."</item>
+        <item>"You&#8217;re so fat, that you have to use a mattress as a maxi-pad."</item>
+        <item>"You&#8217;re so fat, when you burp you cause weather anomalies."</item>
+        <item>"You&#8217;re so fat, when you sit around the house, you sit AROUND the HOUSE"</item>
+        <item>"You&#8217;re so fat, you get clothes in three sizes: extra large, jumbo, and oh-my-god-it&#8217;s-coming-towards-us!"</item>
+        <item>"You&#8217;re so hairy you look like you have Bigfoot in a head lock"</item>
+        <item>"You&#8217;re so lonely your wheelie bins go out more then you"</item>
+        <item>"You&#8217;re so poor you make hobos think they&#8217;re rich"</item>
+        <item>"You&#8217;re so stupid it takes you an hour to cook minute rice."</item>
+        <item>"You&#8217;re so stupid you got fired from a bananna plantation for throwing away all the bent ones"</item>
+        <item>"You&#8217;re so stupid you got fired from the M&amp;M factory for throwing out all the Ws"</item>
+        <item>"You&#8217;re so stupid you tried to put M&amp;Ms in alphabetical order!"</item>
+        <item>"You&#8217;re so ugly you should be the poster child for abortion!"</item>
+        <item>"You&#8217;re so ugly, Hello Kitty said goodbye to you."</item>
+        <item>"You&#8217;re so ugly, a starving dingo wouldn&#8217;t eat your baby."</item>
+        <item>"You&#8217;re so ugly, apes want to adopt you"</item>
+        <item>"You&#8217;re so ugly, if my dog looked like you, I&#8217;d shave its ass and teach it to walk backwards!"</item>
+        <item>"You&#8217;re so ugly, if you joined an ugly contest, they&#8217;d say &#8220;Sorry, no professionals!&#8221;"</item>
+        <item>"You&#8217;re so ugly, if you stuck your head out the window, they&#8217;d arrest you for mooning!"</item>
+        <item>"You&#8217;re so ugly, when you popped out the doctor said aww what a treasure and your mother said yeah lets bury it"</item>
+        <item>"You&#8217;re so ugly, when you walk into a bank, they turn the cameras off!"</item>
+        <item>"You&#8217;re so ugly, when you were born the doctor said I&#8217;m gonna drop it, if it falls is a rat, if it flies is a bat."</item>
+        <item>"You&#8217;re so ugly, when you were born the doctor slapped your mother!"</item>
+        <item>"You&#8217;re so ugly, when you were born the doctors didn&#8217;t know if they should put you in a cradle or a cage"</item>
+        <item>"You&#8217;re so ugly, when you were born, your mother saw the afterbirth and said &#8220;Twins!&#8221;"</item>
+        <item>"You&#8217;re so ugly, when your mother dropped you off at school she got a fine for littering"</item>
+        <item>"You&#8217;re so ugly, you&#8217;d make a train take a dirt road!"</item>
+        <item>"You&#8217;re so ugly, your face is closed on weekends!"</item>
+        <item>"You&#8217;re so ugly, your mother had to feed you with a sling shot."</item>
+        <item>"You&#8217;re so ugly, your mother had to tie a steak around your neck to get the dog to play with you."</item>
+        <item>"You&#8217;re the best at all you do&#8230; and all you do is make people hate you."</item>
+        <item>"You&#8217;re the reason men beat their wives"</item>
+        <item>"You&#8217;ve never been outspoken; no one has ever been able to."</item>
+        <item>"Your Mother&#8217;s so old, she owes Moses a quarter"</item>
+        <item>"Your asinine simian countenance alludes that your foetid stench has annulled the anthropoid ape species diversity."</item>
+        <item>"Your face looks like a pizza with the cheese ripped off"</item>
+        <item>"Your family tree is a cactus because everybody on it is a prick"</item>
+        <item>"Your head is so big you have to step into your shirts"</item>
+        <item>"Your house is so small, you ordered a large pizza and had to eat it outside."</item>
+        <item>"Your mother and father hated you so much your bath toys were an iron and a toaster"</item>
+        <item>"Your mother just called me, and she asked me to pick up a loaf of bread, bag of milk and some condoms, so she doesn&#8217;t make the same mistake twice."</item>
+        <item>"Your mother wears too much perfume."</item>
+        <item>"Your mother&#8217;s armpits are so hairy it looks like she has Chewbacca in a headlock."</item>
+        <item>"Your mother&#8217;s got a leather wig w/suede sideburns."</item>
+        <item>"Your mother&#8217;s got a wooden leg w/a real foot."</item>
+        <item>"Your mother&#8217;s got hair on her tongue and she gargles with curl activator."</item>
+        <item>"Your mother&#8217;s got snakeskin teeth."</item>
+        <item>"Your mother&#8217;s got three teeth&#8230; one in her mouth &amp; two in her pocket."</item>
+        <item>"Your mother&#8217;s like 7up&#8230; never had it never will."</item>
+        <item>"Your mother&#8217;s like Denny&#8217;s&#8230; open 24 hours"</item>
+        <item>"Your mother&#8217;s like McDonalds&#8230; Billions served"</item>
+        <item>"Your mother&#8217;s like a Christmas tree, everybody hangs balls on her."</item>
+        <item>"Your mother&#8217;s like a birthday cake, everybody gets a piece."</item>
+        <item>"Your mother&#8217;s like a bowling ball she always comes back for more"</item>
+        <item>"Your mother&#8217;s like a bowling ball she always winds up in the gutter"</item>
+        <item>"Your mother&#8217;s like a bowling ball you can fit three fingers in"</item>
+        <item>"Your mother&#8217;s like a door knob, everybody gets a turn."</item>
+        <item>"Your mother&#8217;s like a postage stamp, you lick her, stick her, then send her away."</item>
+        <item>"Your mother&#8217;s like a race car driver&#8230; she burns a lot of rubbers"</item>
+        <item>"Your mother&#8217;s like a railway track&#8230; She gets laid all over the country."</item>
+        <item>"Your mother&#8217;s like a shotgun&#8230; give her a cock and she blows"</item>
+        <item>"Your mother&#8217;s like an ice cream cone&#8230; everyone gets a lick"</item>
+        <item>"Your mother&#8217;s like mustard, she spreads easy."</item>
+        <item>"Your mother&#8217;s so dumb she cooked her own complimentary breakfast."</item>
+        <item>"Your mother&#8217;s so dumb she got hit by a parked car."</item>
+        <item>"Your mother&#8217;s so dumb she sold the car for gas money"</item>
+        <item>"Your mother&#8217;s so dumb, she got hit by a cup and said she got mugged."</item>
+        <item>"Your mother&#8217;s so dumb&#8230; she got stabbed at a shoot-out."</item>
+        <item>"Your mother&#8217;s so fat it takes her two trips to haul ass."</item>
+        <item>"Your mother&#8217;s so fat she has to wear 2 watches because she covers two time zones"</item>
+        <item>"Your mother&#8217;s so fat she jumped up to the sky and got stuck"</item>
+        <item>"Your mother&#8217;s so fat she&#8217;s got more chins thin a Chinese phone book"</item>
+        <item>"Your mother&#8217;s so fat that she&#8217;s got smaller fat people orbiting around her"</item>
+        <item>"Your mother&#8217;s so fat that when she turned around its a birthday again!!"</item>
+        <item>"Your mother&#8217;s so fat when she jumped in the ocean the whales started singing We Are Family"</item>
+        <item>"Your mother&#8217;s so fat when she went missing, she took up all four sides of the milk carton"</item>
+        <item>"Your mother&#8217;s so fat, I had to slap her thigh and ride the wave in."</item>
+        <item>"Your mother&#8217;s so fat, at the zoo the elephants started throwing HER peanuts."</item>
+        <item>"Your mother&#8217;s so fat, every time she wears high heels, she strikes oil."</item>
+        <item>"Your mother&#8217;s so fat, her pants size is bitch-lose-some-weight."</item>
+        <item>"Your mother&#8217;s so fat, her yearbook picture was an aerial photo."</item>
+        <item>"Your mother&#8217;s so fat, she got to iron her pants on the driveway"</item>
+        <item>"Your mother&#8217;s so fat, she got to pull down her pants to get into her pockets"</item>
+        <item>"Your mother&#8217;s so fat, she had to go to Sea World to get baptised"</item>
+        <item>"Your mother&#8217;s so fat, she jumped up in the air&#8230; AND GOT STUCK!"</item>
+        <item>"Your mother&#8217;s so fat, she puts on her lipstick with a paint-roller"</item>
+        <item>"Your mother&#8217;s so fat, the traffic cops made her wear &#8220;Caution! Wide Load&#8221;"</item>
+        <item>"Your mother&#8217;s so fat, when her pager goes off, people think she&#8217;s backing up"</item>
+        <item>"Your mother&#8217;s so fat, when she bungee jumps, she brings down the bridge too"</item>
+        <item>"Your mother&#8217;s so fat, when she goes to an all you can eat buffet, they have to install speed bumps"</item>
+        <item>"Your mother&#8217;s so fat, when she sits around the house, she SITS AROUND THE HOUSE!"</item>
+        <item>"Your mother&#8217;s so fat, when she steps on the scales, they read &#8220;one at a time, please&#8221;"</item>
+        <item>"Your mother&#8217;s so fat, when she steps on the scales, they read &#8220;&#8230;to be continued&#8221;"</item>
+        <item>"Your mother&#8217;s so fat, when she wears a yellow raincoat, people say &#8220;Taxi!&#8221;"</item>
+        <item>"Your mother&#8217;s so fat, at the doctors, she stepped on the scales and he said Hey, that&#8217;s my phone number"</item>
+        <item>"Your mother&#8217;s so old she owes Jesus Christ a quarter"</item>
+        <item>"Your mother&#8217;s so old, I told her to start acting her age and the bitch died."</item>
+        <item>"Your mother&#8217;s so old, her birthday&#8217;s expired."</item>
+        <item>"Your mother&#8217;s so poor she went to McDonald&#8217;s to put a shake on layaway"</item>
+        <item>"Your mother&#8217;s so poor, she went to the wishing well and threw in an IOU"</item>
+        <item>"Your mother&#8217;s so poor, I saw her kicking a can down the street, I asked her what she was doing, she said &#8220;Moving.&#8221;"</item>
+        <item>"Your mother&#8217;s so stupid I saw her in the frozen food section with a fishing rod."</item>
+        <item>"Your mother&#8217;s so stupid it takes her a half hour to make minute rice."</item>
+        <item>"Your mother&#8217;s so stupid she tried to wake a sleeping bag"</item>
+        <item>"Your mother&#8217;s so stupid, it took her 2 hours to watch 60 minutes"</item>
+        <item>"Your mother&#8217;s so stupid, she keeps a ruler beside her bed to see how long she can sleep."</item>
+        <item>"Your mother&#8217;s so stupid, she told everyone that she was &#8220;illegitimate&#8221; because she couldn&#8217;t read."</item>
+        <item>"Your mother&#8217;s so ugly she could scare the chrome off a bumper!"</item>
+        <item>"Your mother&#8217;s so ugly she could scare the moss off a rock!"</item>
+        <item>"Your mother&#8217;s so ugly she turned Medusa to stone"</item>
+        <item>"Your mother&#8217;s so ugly the psychiatrist makes her lie face down."</item>
+        <item>"Your mother&#8217;s so ugly, her mother had to be drunk to breast feed her"</item>
+        <item>"Your mother&#8217;s so ugly, instead of putting the bungee cord around her ankle, they put it around her neck"</item>
+        <item>"Your mother&#8217;s so ugly, she gets 364 extra days to dress up for Halloween."</item>
+        <item>"Your mother&#8217;s so ugly, the government moved Halloween to her birthday."</item>
+        <item>"Your mother&#8217;s so ugly, they didn&#8217;t give her a costume when she auditioned for Star Wars."</item>
+        <item>"Your mother&#8217;s so ugly, they filmed &#8220;Gorillas in the Mist&#8221; in her shower"</item>
+        <item>"Your mother&#8217;s so ugly, they push her face into dough to make gorilla cookies."</item>
+        <item>"Your mother&#8217;s so ugly, when she walks down the street in September, people say &#8220;Damn, is it Halloween already?&#8221;"</item>
+        <item>"Your mother&#8217;s so ugly&#8230; she&#8217;s gotta be your mother"</item>
+        <item>"Your mother&#8217;s so stupid, she needed to get home on the 44 bus so she took the 22 twice"</item>
+        <item>"Your parents are siblings"</item>
+        <item>"Your teeth are so yellow traffic slows down when you smile"</item>
+        <item>"Your wife said she liked seafood. So I gave her crabs."</item>
+        <item>"Yours was an unnatural birth; you came from a human being."</item>
+        <item>"&#8220;Dude you&#8217;re fat&#8221;\n&#8220;It runs in the family&#8221;\n&#8220;Mate, no one runs in your family&#8221;"</item>
+        <item>"&#8217;Scuse me, I can&#8217;t seem to find my dick. Mind if I look in your mother&#8217;s mouth?"</item>
+    </string-array>
+
+    <!-- Validation errors -->
+    <string name="bad_number_title">"Oops"</string>
+    <string name="bad_number_message">"That looks like an invalid phone number. Have another go."</string>
+
+    <!-- no idea... alex's stuff? -->
     <string name="menu_add">Add Insult</string>
     <string name="menu_delete">Delete Insults</string>
-    <string name="about_copyright">Copyright \u00A9 2012 A. Marshall/A. Pelly</string>
-    <string name="about_text">Some people are just wankers. You should let them know!\n\nCreated using eclipse, github, the android SDK and many, many code snipets from around the web.\n\nSpecial thanks to the Stack Overflow community and Lars Vogel at vogella.com\n\nDistributed under the GPLv3 in the hopes that it will be amusing, but without any warranties of any kind. Use at your own risk.</string>
-    <string name="icon_desc">FoD Icon</string>
-    <string name="menu_settings">Settings</string>
-    <string name="title_activity_about_dialog">AboutDialog</string>
-    <string name="SMS_number">0294895150</string>
-    <string name="SMS_message">You\'re a complete tool Dawson.</string>
     <string name="title">Title</string>
     <string name="body">Body</string>
     <string name="confirm">Confirm</string>
     <string name="editinsult">Edit Insult</string>
-	<string name="dawsons_number">+64211807015</string>
+    <string name="no_insults">No Insults set up yet</string>
+
+    <!-- banned phone numbers -->
+    <string-array name="invalid_numbers">
+        <item>4VKMJY</item>
+        <item>4JE7UF</item>
+        <item>D3358</item>
+    </string-array>
+
+    <string name="banned_number_title">"no No NO!"</string>
+    <string name="banned_number_message">"You really thought that\'d work? Nice try dingo."</string>
+
 </resources>

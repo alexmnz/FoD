@@ -15,7 +15,6 @@ import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-
 public class Insults extends Activity {
 	private InsultsDBAdaptor mDbHelper;
 	public static final int INSERT_ID = Menu.FIRST;
