@@ -14,8 +14,8 @@ git rm *.dex
 git rm *.class
 
 # generated files
-git rm bin/
-git rm gen/
+git rm -r -f bin/
+git rm -r gen/
 
 # Local configuration file (sdk path, etc)
 git rm local.properties
